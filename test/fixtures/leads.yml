@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  sending_agent_id: 1
+  receiving_agent_id: 1
+  accepted_by_agent: false
+  accepted_by_agent_time: 2014-02-22 21:41:48
+  accepted_by_broker: false
+  accepted_by_broker_time: 2014-02-22 21:41:48
+  selling: false
+  buying: false
+  price_range_start: 1
+  price_range_end: 1
+
+two:
+  user_id: 1
+  sending_agent_id: 1
+  receiving_agent_id: 1
+  accepted_by_agent: false
+  accepted_by_agent_time: 2014-02-22 21:41:48
+  accepted_by_broker: false
+  accepted_by_broker_time: 2014-02-22 21:41:48
+  selling: false
+  buying: false
+  price_range_start: 1
+  price_range_end: 1
