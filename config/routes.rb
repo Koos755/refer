@@ -1,6 +1,6 @@
 Refer::Application.routes.draw do
-  get "sessions/new"
-  get "sessions/create"
+  get "sessions/new" => 'sessions#new'
+  get "sessions/create", as: 'sessions'
   get "sessions/destroy"
   get "users/new"
   get "users/show"
