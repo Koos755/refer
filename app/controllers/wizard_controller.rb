@@ -25,19 +25,19 @@ class WizardController < ApplicationController
   def step2_create
     @wizard = Wizard.new(step2_params)
     if @wizard.valid?
-      lead = Lead.new(step2_lead_params)
-      lead.user_id = @user.id
-      lead.sending_agent_id = current_user.agent.id
-      lead.save
+      @wizard.save(current_user)
       redirect_to step3_url
     else
       render 'step2'
     end
   end
 
-
-
   def step3
+    @user = User.new
+  end
+
+  def step3_create
+
   end
 
   def step4

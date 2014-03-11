@@ -1,3 +1,7 @@
-<h1>Wizzard#step3</h1>
-<p>Find me in app/views/wizzard/step3.html.erb</p>
+<h1>Enter Receiving Agent Information</h1>
 
+<%= render 'users/form', user: @user, destination_url: step1_create_url %>
+
+<script type="text/javascript">
+  $('#user_password').remove();
+</script>
