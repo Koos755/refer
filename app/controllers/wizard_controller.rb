@@ -19,12 +19,12 @@ class WizardController < ApplicationController
   end
 
   def step2
+    @wizard = Wizard.new
   end
 
   def step2_create
-    @user = User.new(step2_user_params)
-    @user.create_password
-    if @user.save
+    @wizard = Wizard.new(step2_params)
+    if @wizard.valid?
       lead = Lead.new(step2_lead_params)
       lead.user_id = @user.id
       lead.sending_agent_id = current_user.agent.id
@@ -49,11 +49,7 @@ class WizardController < ApplicationController
     params.require(:user).permit(:name,:email,:password)
   end
 
-  def step2_user_params
-    params.permit(:name, :email, :mobile)
-  end
-
-  def step2_lead_params
-    params.permit(:buying, :selling, :price_range_start, :price_range_end)
+  def step2_params
+    params.require(:wizard).permit(:name, :email, :mobile, :buying, :selling, :price_range_start, :price_range_end)
   end
 end
