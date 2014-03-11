@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       # redirect_to parent_url(parent)
       if request.referrer.split('/').last == 'step1'
-        render 'wizard/step2'
+        redirect_to step2_url
       end
     else
       flash[:error] = "Something went wrong, please try again."
