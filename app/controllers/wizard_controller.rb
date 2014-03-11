@@ -1,4 +1,4 @@
-class WizzardController < ApplicationController
+class WizardController < ApplicationController
   def step1
     @user = User.new
     if current_user.present?
