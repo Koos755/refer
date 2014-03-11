@@ -1,0 +1,8 @@
+<h1>Register to Send a Referral</h1>
+
+<%= render 'layouts/errors', object: @user %>
+
+<%= render 'users/form', user: @user, destination_url: step2_url %>
+
+<h2> or Login</h2>
+<%= render 'sessions/form' %>
