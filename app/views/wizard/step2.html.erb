@@ -1,10 +1,14 @@
 <h1>Enter Your Lead Information</h1>
 
-<%= form_tag(step3_url, method: :post) do %>
+<%= form_tag(step2_create_url, method: :post) do %>
   <div class="form-group mt5">
     <%= text_field_tag :name, nil, placeholder: "Name" %>
     <%= text_field_tag :email, nil, placeholder: "Email" %>
     <%= text_field_tag :mobile, nil, placeholder: "Mobile Phone" %>
+    <%= radio_button_tag(:selling, 1) %>
+    <%= label_tag(:selling, "Selling") %>
+    <%= radio_button_tag(:buying, 1) %>
+    <%= label_tag(:buying, "Buying") %>
     <%= text_field_tag :price_range_start, nil, placeholder: "Price range start" %>
     <%= text_field_tag :price_range_end, nil, placeholder: "Price range end" %>
     <%= button_tag 'Next Step' %>

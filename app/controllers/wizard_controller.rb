@@ -2,7 +2,7 @@ class WizardController < ApplicationController
   def step1
     @user = User.new
     if current_user.present?
-      render 'step2'
+      redirect_to step2_url
     end
   end
 
@@ -15,7 +15,11 @@ class WizardController < ApplicationController
     else
       render 'step1'
     end
+  end
 
+  def step2_create
+    @buying = params[:buying]
+    render 'step3'
   end
 
   def step3

@@ -5,17 +5,17 @@ Refer::Application.routes.draw do
   get "wizard/step1", as: 'step1'
   post "wizard/step1/create" => 'wizard#step1_create', as: 'step1_create'
   get "wizard/step2", as: 'step2'
-  post "wizard/step2/create", as: 'step2_create'
+  post "wizard/step2/create" => 'wizard#step2_create', as: 'step2_create'
   get "wizard/step3", as: 'step3'
-  post "wizard/step3/create", as: 'step3_create'
+  post "wizard/step3/create" => 'wizard#step3_create', as: 'step3_create'
   get "wizard/step4", as: 'step4'
-  post "wizard/step4/create", as: 'step4_create'
+  post "wizard/step4/create" => 'wizard#step4_create', as: 'step4_create'
 
   get 'about/index' => 'about#index'
 
   get "sessions/new" => 'sessions#new'
-  post "sessions/create", as: 'sessions'
-  delete "sessions/"
+  post "sessions/" => 'sessions#create', as: 'sessions'
+  delete "sessions/" => 'sessions#destroy'
   get "users/new"
   get "users/show"
   get "users/edit"

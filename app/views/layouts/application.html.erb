@@ -25,7 +25,11 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><%= link_to "Signup / Login", step1_url %></li>
+      <% if current_user.present? %>
+        <li class="active"><%= link_to "Signout", sessions_url, method: :delete %></li>
+      <% else %>
+        <li class="active"><%= link_to "Signup / Signin", step1_url %></li>
+      <% end %>
     </ul>
 
     <!-- Left Nav Section -->
