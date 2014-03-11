@@ -6,11 +6,12 @@ class WizardController < ApplicationController
     end
   end
 
-  def step2
+  def step1_create
     @user = User.new(step1_params)
     @user.password_confirmation = params[:user][:password]
     if @user.save
       session[:user_id] = @user.id
+      redirect_to step2_url
     else
       render 'step1'
     end

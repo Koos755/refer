@@ -3,7 +3,7 @@ Refer::Application.routes.draw do
   root 'home#index'
 
   get "wizard/step1", as: 'step1'
-  post "wizard/step1/create", as: 'step1_create'
+  post "wizard/step1/create" => 'wizard#step1_create', as: 'step1_create'
   get "wizard/step2", as: 'step2'
   post "wizard/step2/create", as: 'step2_create'
   get "wizard/step3", as: 'step3'
