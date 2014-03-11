@@ -3,9 +3,13 @@ Refer::Application.routes.draw do
   root 'home#index'
 
   get "wizard/step1", as: 'step1'
-  post "wizard/step2", as: 'step2'
-  post "wizard/step3", as: 'step3'
-  post "wizard/step4", as: 'step4'
+  post "wizard/step1/create", as: 'step1_create'
+  get "wizard/step2", as: 'step2'
+  post "wizard/step2/create", as: 'step2_create'
+  get "wizard/step3", as: 'step3'
+  post "wizard/step3/create", as: 'step3_create'
+  get "wizard/step4", as: 'step4'
+  post "wizard/step4/create", as: 'step4_create'
 
 
 
