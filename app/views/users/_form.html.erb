@@ -1,6 +1,10 @@
+
+
 <%= form_for(user, url: destination_url) do |f| %>
   <%= f.text_field :name, placeholder: 'Name'  %>
   <%= f.text_field :email, placeholder: 'Email'  %>
   <%= f.password_field :password, placeholder: 'Password'  %>
-  <%= f.submit "Register"%>
+  <%= f.submit "Register", :class => 'success button'%>
 <% end %>
+
+

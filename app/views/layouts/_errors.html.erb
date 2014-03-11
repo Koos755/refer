@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
-  <div class="alert alert-danger mb10 mt25 ptb5">
-    <a class="close" data-dismiss="alert">&times;</a>
-    <h5><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.name %> from being saved:</h5>
+  <div class="alert">
+
+    <span class="[success alert primary] label">Sorry, there were <%= pluralize(object.errors.count, "error") %>:</span>
     <ul>
       <% object.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
