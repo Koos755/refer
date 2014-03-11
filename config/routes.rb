@@ -15,7 +15,7 @@ Refer::Application.routes.draw do
 
   get "sessions/new" => 'sessions#new'
   post "sessions/create", as: 'sessions'
-  get "sessions/destroy"
+  delete "sessions/"
   get "users/new"
   get "users/show"
   get "users/edit"
