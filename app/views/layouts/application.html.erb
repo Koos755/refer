@@ -13,6 +13,7 @@
 
   <body>
 
+
   <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
@@ -32,6 +33,11 @@
     </ul>
   </section>
 </nav>
+
+
+    <% if current_user.present? %>
+      <h3><%= "Hallo #{current_user.name}" %></h3>
+    <% end %>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
