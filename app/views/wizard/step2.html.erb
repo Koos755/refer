@@ -1,6 +1,31 @@
-<h1>Enter Your Lead Information</h1>
+&nbsp;
 
-<%= form_tag(step2_create_url, method: :post) do %>
+<div class="row">
+  <div class="large-3 columns">&nbsp;</div>
+  <div class=" large-9 columns">
+  <div class="button-bar">
+    <ul class="button-group [radius round]">
+      <li><a href="#" class="small button secondary disabled">1) Register</a></li>
+      <li><a href="#" class="small button secondary success">2) Lead details</a></li>
+      <li><a href="#" class="small button secondary disabled">3) Receiving agent</a></li>
+      <li><a href="#" class="small button secondary disabled">4) Send</a></li>
+  </div>
+  </div>
+  <div class="large-3 columns">&nbsp;</div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">&nbsp;</div>
+  <div class="large-4 columns">
+    <h4>Enter Your Lead Information</h4>
+  </div>
+  <div class="large-4 columns">&nbsp;</div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">&nbsp;</div>
+  <div class="large-4 columns">
+    <%= form_tag(step2_create_url, method: :post) do %>
   <div class="form-group mt5">
     <%= text_field_tag :name, nil, placeholder: "Name" %>
     <%= text_field_tag :email, nil, placeholder: "Email" %>
@@ -14,3 +39,8 @@
     <%= button_tag 'Next Step' %>
   </div>
 <% end %>
+</div>
+
+<div class="large-4 columns">&nbsp;</div>
+</div>
+</div>
