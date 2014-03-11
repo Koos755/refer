@@ -10,6 +10,7 @@ class WizardController < ApplicationController
     @user = User.new(step1_params)
     @user.password_confirmation = params[:user][:password]
     if @user.save
+      @user.create_with_agent
       session[:user_id] = @user.id
       redirect_to step2_url
     else
@@ -18,6 +19,7 @@ class WizardController < ApplicationController
   end
 
   def step2_create
+    @user
     @buying = params[:buying]
     render 'step3'
   end
