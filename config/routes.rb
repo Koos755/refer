@@ -1,4 +1,7 @@
 Refer::Application.routes.draw do
+
+  root 'home#index'
+
   get "wizzard/step1"
   get "wizzard/step2"
   get "wizzard/step3"
