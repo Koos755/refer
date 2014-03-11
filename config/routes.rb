@@ -1,4 +1,8 @@
 Refer::Application.routes.draw do
+  get "wizzard/step1"
+  get "wizzard/step2"
+  get "wizzard/step3"
+  get "wizzard/step4"
   get "sessions/new" => 'sessions#new'
   post "sessions/create", as: 'sessions'
   get "sessions/destroy"
