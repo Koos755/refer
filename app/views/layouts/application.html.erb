@@ -31,7 +31,7 @@
         <li class="inactive"><%= link_to "#{current_user.name}", about_index_url %></li>
         <li class="active"><%= link_to "Sign out", sessions_url, method: :delete %></li>
       <% else %>
-        <li class="active"><%= link_to "Signup / Sign in", step1_url %></li>
+        <li class="active"><%= link_to "Sign up / Sign in", step1_url %></li>
       <% end %>
     </ul>
 

@@ -1,9 +1,35 @@
-<h1>Enter Receiving Agent Information</h1>
+&nbsp;
 
-<%= render 'users/form', user: @user, destination_url: step3_create_url, button: "Next Step" %>
+<div class="row">
+  <div class="large-3 columns">&nbsp;</div>
+  <div class=" large-9 columns">
+  <div class="button-bar">
+    <ul class="button-group [radius round]">
+      <li><a href="#" class="small button secondary disabled">1) Client details</a></li>
+      <li><a href="#" class="small button secondary success">2) Receiving agent</a></li>
+      <li><a href="#" class="small button secondary disabled">3) Review/Send</a></li>
+  </div>
+  </div>
+  <div class="large-3 columns">&nbsp;</div>
+</div>
 
-<script type="text/javascript">
-  $('#user_password').replaceWith('<%= j(render 'hidden', lead_id: @lead.id) %>');
-</script>
 
+<div class="row">
+  <div class="large-6 columns">
+<h4>Enter Receiving Agent's Information</h4>
 
+  <%= render 'users/form', user: @user, destination_url: step3_create_url, button: "Next Step" %>
+
+  <script type="text/javascript">
+    $('#user_password').replaceWith('<%= j(render 'hidden', lead_id: @lead.id) %>');
+  </script>
+
+  </div>
+
+    <div class="large-6 columns">
+      <h5>Don't you need more information?</h5>
+      <div class="callout panel">
+      <p>We'll collect everything we need from the Receiving Agent later.</p>
+      </div>
+    </div>
+    </div>

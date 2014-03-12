@@ -5,10 +5,9 @@
   <div class=" large-9 columns">
   <div class="button-bar">
     <ul class="button-group [radius round]">
-      <li><a href="#" class="small button secondary disabled">1) Register</a></li>
-      <li><a href="#" class="small button secondary success">2) Lead details</a></li>
-      <li><a href="#" class="small button secondary disabled">3) Receiving agent</a></li>
-      <li><a href="#" class="small button secondary disabled">4) Send</a></li>
+      <li><a href="#" class="small button secondary success">1) Client details</a></li>
+      <li><a href="#" class="small button secondary disabled">2) Receiving agent</a></li>
+      <li><a href="#" class="small button secondary disabled">3) Review/Send</a></li>
   </div>
   </div>
   <div class="large-3 columns">&nbsp;</div>
@@ -21,7 +20,7 @@
       <%= form_for(@wizard, url: step2_create_url) do |f|%>
         <%= f.text_field :name, placeholder: "First & Last Name(s)" %>
         <%= f.text_field :email, placeholder: "Email" %>
-        <%= f.text_field :mobile, placeholder: "Mobile Phone (ex. 123-456-7890)" %>
+        <%= f.text_field :mobile, placeholder: "Mobile Phone (Example: 123-456-7890)" %>
         <%= f.radio_button(:selling, 1) %>
         <%= f.label(:selling, "Selling") %>
         <%= f.radio_button(:buying, 1) %>

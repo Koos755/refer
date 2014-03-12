@@ -1,24 +1,84 @@
-<h1>Review and Send</h1>
+&nbsp;
 
-<h3>Lead Details:</h3>
-<ul>
-  <li>Name: <%= @lead.user.name %></li>
-  <li>Email: <%= @lead.user.email %></li>
-  <li>Buying: <%= @lead.buying %></li>
-  <li>Selling: <%= @lead.selling %></li>
-  <li>Mobile Phone: <%= @lead.user.mobile %></li>
-  <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
-</ul>
+<div class="row">
+  <div class="large-3 columns">&nbsp;</div>
+  <div class=" large-9 columns">
+  <div class="button-bar">
+    <ul class="button-group [radius round]">
+      <li><a href="#" class="small button secondary disabled">1) Client details</a></li>
+      <li><a href="#" class="small button secondary disabled">2) Receiving agent</a></li>
+      <li><a href="#" class="small button secondary success">3) Review/Send</a></li>
+  </div>
+  </div>
+  <div class="large-3 columns">&nbsp;</div>
+</div>
 
-<h3>Receiving Agent:</h3>
-<ul>
-  <li>Name: <%= @lead.receiving_agent.user.name %></li>
-  <li>Email: <%= @lead.receiving_agent.user.email %></li>
-</ul>
+<div class="row">
+  <div class="large-12 columns">
+<h3>Review and Send</h3>
+    </div>
+</div>
 
-<%= form_tag(step4_create_url, method: :post) do %>
-  <%= check_box_tag :accepted_terms, true, false %>
-  <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
-  <%= render 'hidden', lead_id: @lead.id %>
-  <%= button_tag 'Send Referral' %>
-<% end %>
+<div class="row">
+  <div class="large-12 columns">
+<hr />
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="large-4 columns">
+
+  <h4>Client:</h4>
+  <ul>
+    <li>Name: <%= @lead.user.name %></li>
+    <li>Email: <%= @lead.user.email %></li>
+    <li>Buying: <%= @lead.buying %></li>
+    <li>Selling: <%= @lead.selling %></li>
+    <li>Mobile Phone: <%= @lead.user.mobile %></li>
+    <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+  </ul>
+
+  </div>
+
+  <div class="large-4 columns">
+
+  <h4>Receiving Agent:</h4>
+  <ul>
+    <li>Name: <%= @lead.receiving_agent.user.name %></li>
+    <li>Email: <%= @lead.receiving_agent.user.email %></li>
+  </ul>
+
+  </div>
+
+
+<div class="large-4 columns">
+
+<h5>What happens next?</h5>
+      <div class="callout panel">
+      <p>We send the referral to the Receiving Agent. When they sign off, it is sent to their managing broker for approval. You'll be notified by email every step of the way.</p>
+      </div>
+
+</div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns"><hr /></div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">
+    <%= form_tag(step4_create_url, method: :post) do %>
+      <%= check_box_tag :accepted_terms, true, false %>
+      <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
+      <%= render 'hidden', lead_id: @lead.id %>
+      <%= button_tag 'Send Referral' %>
+    <% end %>
+
+  </div>
+  <div class="large-4 columns"></div>
+  <div class="large-4 columns"></div>
+</div>
+
+
+
