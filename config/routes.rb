@@ -1,5 +1,6 @@
 Refer::Application.routes.draw do
 
+  get "token/value"
   root 'home#index'
 
   get "wizard/step1", as: 'step1'
@@ -22,6 +23,10 @@ Refer::Application.routes.draw do
   get "users/edit"
   get "users/create"
   get "users/update"
+
+  get "token/:value" => 'token#value', as: 'token'
+  get "agent/accept" => 'token#agent', as: 'agent_accept'
+  get "broker/accept" => 'token#broker', as: 'broker_accept'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

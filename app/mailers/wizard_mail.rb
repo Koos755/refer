@@ -7,8 +7,9 @@ class WizardMail < ActionMailer::Base
     :subject => 'Thanks for signing up for our amazing app' )
   end
 
-  def send_lead_receiving_agent(lead)
+  def send_lead_receiving_agent(lead, token)
     @lead = lead
+    @url = token_url(token.value)
     mail( :to => @lead.receiving_agent.user.email,
       :subject => "Real estate referral from #{@lead.sending_agent.user.name}" )
   end
