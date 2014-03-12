@@ -15,33 +15,30 @@
 </div>
 
 <div class="row">
-  <div class="large-4 columns">&nbsp;</div>
-  <div class="large-4 columns">
-    <h4>Enter Your Lead Information</h4>
+  <div class="large-6 columns">
+    <h4>About Your Referral</h4>
     <%= render 'layouts/errors', object: @wizard %>
+      <%= form_for(@wizard, url: step2_create_url) do |f|%>
+        <%= f.text_field :name, placeholder: "First & Last Name(s)" %>
+        <%= f.text_field :email, placeholder: "Email" %>
+        <%= f.text_field :mobile, placeholder: "Mobile Phone (ex. 123-456-7890)" %>
+        <%= f.radio_button(:selling, 1) %>
+        <%= f.label(:selling, "Selling") %>
+        <%= f.radio_button(:buying, 1) %>
+        <%= f.label(:buying, "Buying") %>
+        <%= f.text_field :price_range_start, placeholder: "Minimum price (Example: $250,000)" %>
+        <%= f.text_field :price_range_end, placeholder: "Maximum price (Example: $400,000)" %>
+        <%= f.button 'Next Step' %>
+    <% end %>
   </div>
-  <div class="large-4 columns">&nbsp;</div>
-</div>
 
-<div class="row">
-  <div class="large-4 columns">&nbsp;</div>
-  <div class="large-4 columns">
-    <%= form_for(@wizard, url: step2_create_url) do |f|%>
-  <div class="form-group mt5">
-    <%= f.text_field :name, placeholder: "Name" %>
-    <%= f.text_field :email, placeholder: "Email" %>
-    <%= f.text_field :mobile, placeholder: "Mobile Phone" %>
-    <%= f.radio_button(:selling, 1) %>
-    <%= f.label(:selling, "Selling") %>
-    <%= f.radio_button(:buying, 1) %>
-    <%= f.label(:buying, "Buying") %>
-    <%= f.text_field :price_range_start, placeholder: "Price range start" %>
-    <%= f.text_field :price_range_end, placeholder: "Price range end" %>
-    <%= f.button 'Next Step' %>
-  </div>
-<% end %>
-</div>
+    <div class="large-6 columns">
+      <h5>The Basics</h5>
+      <div class="callout panel">
+      <p>The referral fee is <strong>25%</strong> of the total commission that the Receiving Broker/Agent receives from a successful transaction.</p>
+      <p>This fee is due no later than 15 business days after the transaction is completed.</p>
 
-<div class="large-4 columns">&nbsp;</div>
-</div>
+      <em><p>You will see the full, legal agreement prior to sending to the Receiving Agent.</p></em>
+      </div>
+    </div>
 </div>
