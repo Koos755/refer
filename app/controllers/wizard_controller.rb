@@ -59,7 +59,7 @@ class WizardController < ApplicationController
   end
 
   def step4_create
-    @lead = Lead.find_by(id: params[:lead_id])
+    @lead = Lead.find_by(id: params[:user][:lead_id])
     if params[:accepted_terms] == "true"
       @lead.accepted_terms = Time.now
       @lead.save
@@ -70,7 +70,6 @@ class WizardController < ApplicationController
   end
 
   def step5
-
   end
 
   private
