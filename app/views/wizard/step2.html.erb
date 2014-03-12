@@ -15,15 +15,15 @@
 
 <div class="row">
   <div class="large-6 columns">
-    <h4>Your Referral Details</h4>
+    <h4>Your Referral Client's Details</h4>
     <%= render 'layouts/errors', object: @wizard %>
       <%= form_for(@wizard, url: step2_create_url) do |f|%>
         <%= f.text_field :name, placeholder: "First & Last Name(s)" %>
-        <%= f.text_field :email, placeholder: "Email" %>
+        <%= f.email_field :email, placeholder: "Email" %>
         <%= f.text_field :mobile, placeholder: "Mobile Phone (Example: 123-456-7890)" %>
-        <%= f.radio_button(:selling, 1) %>
+        <%= f.check_box :selling %>
         <%= f.label(:selling, "Selling") %>
-        <%= f.radio_button(:buying, 1) %>
+        <%= f.check_box :buying %>
         <%= f.label(:buying, "Buying") %>
         <%= f.text_field :price_range_start, placeholder: "Minimum price (Example: $250,000)" %>
         <%= f.text_field :price_range_end, placeholder: "Maximum price (Example: $400,000)" %>
