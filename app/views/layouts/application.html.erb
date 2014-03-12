@@ -37,6 +37,12 @@
 
     <!-- Left Nav Section -->
     <ul class="left">
+
+      <% if current_user.present? %>
+        <li><%= link_to "My Referrals", about_index_url %></li>
+      <% else %>
+      <% end %>
+
       <li><%= link_to "About / FAQ", about_index_url %></li>
     </ul>
   </section>
