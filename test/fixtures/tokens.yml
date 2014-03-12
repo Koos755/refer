@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: MyString
+  type: 
+  user_id: 1
+  lead_id: 1
+
+two:
+  value: MyString
+  type: 
+  user_id: 1
+  lead_id: 1
