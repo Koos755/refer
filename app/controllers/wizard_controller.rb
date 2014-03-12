@@ -26,7 +26,7 @@ class WizardController < ApplicationController
     @wizard = Wizard.new(step2_params)
     if @wizard.valid?
       @wizard.save(current_user)
-      redirect_to step3_url
+      redirect_to step3_url({lead_id: @wizard.lead_id})
     else
       render 'step2'
     end
@@ -34,10 +34,24 @@ class WizardController < ApplicationController
 
   def step3
     @user = User.new
+    @lead = Lead.find_by(id: params[:lead])
   end
 
   def step3_create
-
+    @user = User.find_by(email: params[:user][:email])
+    if @user.present?
+      unless @user.agent.present?
+        @user.create_with_agent
+        @user.save
+      end
+    else
+      @user = User.new(step3_params)
+      @user.create_password
+      @user.save
+      @user.create_with_agent
+      @user.save
+    end
+    redirect_to step4_url({lead_id: params[:user][:lead_id], receiving_agent_id: @user.agent.id})
   end
 
   def step4
@@ -51,5 +65,9 @@ class WizardController < ApplicationController
 
   def step2_params
     params.require(:wizard).permit(:name, :email, :mobile, :buying, :selling, :price_range_start, :price_range_end)
+  end
+
+  def step3_params
+    params.require(:user).permit(:name,:email)
   end
 end

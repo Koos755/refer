@@ -1,7 +1,9 @@
 <h1>Enter Receiving Agent Information</h1>
 
-<%= render 'users/form', user: @user, destination_url: step1_create_url %>
+<%= render 'users/form', user: @user, destination_url: step3_create_url, button: "Next Step" %>
 
 <script type="text/javascript">
-  $('#user_password').remove();
+  $('#user_password').replaceWith('<%= j(render 'hidden', lead_id: @lead.id) %>');
 </script>
+
+
