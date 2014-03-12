@@ -10,6 +10,7 @@ class WizardController < ApplicationController
     @user = User.new(step1_params)
     @user.password_confirmation = params[:user][:password]
     if @user.save
+      WizardMail.send_signup_email(@user).deliver
       @user.create_with_agent
       session[:user_id] = @user.id
       redirect_to step2_url
@@ -63,13 +64,14 @@ class WizardController < ApplicationController
     if params[:accepted_terms] == "true"
       @lead.accepted_terms = Time.now
       @lead.save
-      redirect_to step5_url
+      redirect_to step5_url({lead_id: @lead.id})
     else
       render 'step4'
     end
   end
 
   def step5
+    @lead = Lead.find_by(id: params[:lead_id])
   end
 
   private
