@@ -1,18 +1,9 @@
-<div class="row">
 
-  <div class="small-2 medium-4 large-4 columns">&nbsp;</div>
-
-    <div class="small-8 medium-4 large-4 columns">
     <%= form_tag(sessions_url, method: :post) do %>
-      <div>
+
         <%= email_field_tag :email, nil, placeholder: "Email" %>
         <%= password_field_tag :password, nil, placeholder: "Password" %>
         <%= button_tag 'Sign In' %>
-      </div>
+
     <% end %>
-    </div>
 
-    <div class="small-2 medium-4 large-4 columns">&nbsp;</div>
-
-  </div>
-</div>
