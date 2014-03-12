@@ -1,8 +1,8 @@
 
 
 <%= form_for(user, url: destination_url) do |f| %>
-  <%= f.text_field :name, placeholder: 'First & Last Name'  %>
-  <%= f.text_field :email, placeholder: 'Email'  %>
+  <%= f.text_field :name, placeholder: 'Your First & Last Name'  %>
+  <%= f.email_field :email, placeholder: 'Email'  %>
   <%= f.password_field :password, placeholder: 'Password'  %>
   <%= f.submit button, :class => 'button'%>
 <% end %>
