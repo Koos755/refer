@@ -64,6 +64,7 @@ class WizardController < ApplicationController
     if params[:accepted_terms] == "true"
       @lead.accepted_terms = Time.now
       @lead.save
+      WizardMail.send_lead_receiving_agent(@lead).deliver
       redirect_to step5_url({lead_id: @lead.id})
     else
       render 'step4'

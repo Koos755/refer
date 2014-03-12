@@ -33,8 +33,8 @@
   <ul>
     <li>Name: <%= @lead.user.name %></li>
     <li>Email: <%= @lead.user.email %></li>
-    <li>Buying: <%= @lead.buying %></li>
-    <li>Selling: <%= @lead.selling %></li>
+    <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
+    <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
     <li>Mobile Phone: <%= @lead.user.mobile %></li>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
   </ul>
