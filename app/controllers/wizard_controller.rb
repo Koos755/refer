@@ -39,6 +39,7 @@ class WizardController < ApplicationController
 
   def step3_create
     @user = User.find_by(email: params[:user][:email])
+    lead = Lead.find_by(id: params[:user][:lead_id])
     if @user.present?
       unless @user.agent.present?
         @user.create_with_agent
@@ -51,7 +52,9 @@ class WizardController < ApplicationController
       @user.create_with_agent
       @user.save
     end
-    redirect_to step4_url({lead_id: params[:user][:lead_id], receiving_agent_id: @user.agent.id})
+    lead.receiving_agent_id = @user.id
+    lead.save
+    redirect_to step4_url({lead_id: lead.id})
   end
 
   def step4
