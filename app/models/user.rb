@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
     password = SecureRandom.urlsafe_base64(8)
     self.password = password
     self.password_confirmation = password
+    self.save
   end
 
   def create_with_agent
     agent = Agent.new
     agent.user_id = self.id
     agent.save
+    self.save
   end
 end

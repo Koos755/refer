@@ -40,17 +40,12 @@ class WizardController < ApplicationController
   def step3_create
     @user = User.find_by(email: params[:user][:email])
     lead = Lead.find_by(id: params[:user][:lead_id])
-    if @user.present?
-      unless @user.agent.present?
-        @user.create_with_agent
-        @user.save
-      end
-    else
+    unless @user.present?
       @user = User.new(step3_params)
       @user.create_password
-      @user.save
+    end
+    unless @user.agent.present?
       @user.create_with_agent
-      @user.save
     end
     lead.receiving_agent_id = @user.id
     lead.save
