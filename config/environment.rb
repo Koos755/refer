@@ -9,10 +9,20 @@ Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
 ActionMailer::Base.smtp_settings = {
   :user_name => 'justinus',
-  :password => ENV['SGP'],
+  :password => 'surerefer',
   :domain => 'surerefer.herokuapp.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
+
+# ActionMailer::Base.smtp_settings = {
+#   :user_name => 'paay',
+#   :password => '!@#paay$%^',
+#   :domain => 'paay.co',
+#   :address => 'smtp.sendgrid.net',
+#   :port => 587,
+#   :authentication => :plain,
+#   :enable_starttls_auto => true
+# }

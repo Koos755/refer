@@ -38,6 +38,7 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'sendgrid'
 
 # Use unicorn as the app server
 # gem 'unicorn'
