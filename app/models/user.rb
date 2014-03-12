@@ -17,6 +17,5 @@ class User < ActiveRecord::Base
     agent = Agent.new
     agent.user_id = self.id
     agent.save
-    self.save
   end
 end

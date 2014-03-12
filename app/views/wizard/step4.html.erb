@@ -1,2 +1,24 @@
-<h1>Wizzard#step4</h1>
-<p>Find me in app/views/wizzard/step4.html.erb</p>
+<h1>Review and Send</h1>
+
+<h3>Lead Details:</h3>
+<ul>
+  <li>Name: <%= @lead.user.name %></li>
+  <li>Email: <%= @lead.user.email %></li>
+  <li>Buying: <%= @lead.buying %></li>
+  <li>Selling: <%= @lead.selling %></li>
+  <li>Mobile Phone: <%= @lead.user.mobile %></li>
+  <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+</ul>
+
+<h3>Receiving Agent:</h3>
+<ul>
+  <li>Name: <%= @lead.receiving_agent.user.name %></li>
+  <li>Email: <%= @lead.receiving_agent.user.email %></li>
+</ul>
+
+<%= form_tag(step4_create_url, method: :post) do %>
+  <%= check_box_tag :accepted_terms, true, false %>
+  <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
+  <%= render 'hidden', lead_id: @lead.id %>
+  <%= button_tag 'Send Referral' %>
+<% end %>

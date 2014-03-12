@@ -34,25 +34,43 @@ class WizardController < ApplicationController
 
   def step3
     @user = User.new
-    @lead = Lead.find_by(id: params[:lead])
+    @lead = Lead.find_by(id: params[:lead_id])
   end
 
   def step3_create
     @user = User.find_by(email: params[:user][:email])
     lead = Lead.find_by(id: params[:user][:lead_id])
-    unless @user.present?
+    if @user.present?
+      unless @user.agent.present?
+        @user.create_with_agent
+      end
+    else
       @user = User.new(step3_params)
       @user.create_password
-    end
-    unless @user.agent.present?
       @user.create_with_agent
     end
-    lead.receiving_agent_id = @user.id
+    lead.receiving_agent_id = @user.agent.id
     lead.save
     redirect_to step4_url({lead_id: lead.id})
   end
 
   def step4
+    @lead = Lead.find_by(id: params[:lead_id])
+  end
+
+  def step4_create
+    @lead = Lead.find_by(id: params[:lead_id])
+    if params[:accepted_terms] == "true"
+      @lead.accepted_terms = Time.now
+      @lead.save
+      redirect_to step5_url
+    else
+      render 'step4'
+    end
+  end
+
+  def step5
+
   end
 
   private

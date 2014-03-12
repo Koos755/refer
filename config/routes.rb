@@ -10,6 +10,7 @@ Refer::Application.routes.draw do
   post "wizard/step3/create" => 'wizard#step3_create', as: 'step3_create'
   get "wizard/step4", as: 'step4'
   post "wizard/step4/create" => 'wizard#step4_create', as: 'step4_create'
+  get "wizard/step5", as: 'step5'
 
   get 'about/index' => 'about#index'
 
