@@ -1,28 +1,39 @@
 class LeadAcceptController < ApplicationController
 
+  before_action :set_lead
+  before_action :only_agent, only: [:agent, :agent_reply]
+  before_action :only_broker, only: [:broker, :broker_reply]
+
   def agent
-    @lead = Lead.find_by(id: params[:lead_id])
-    if current_user.present? && current_user == @lead.receiving_agent.user
-      render 'agent'
-    else
-      flash[:error] = "You are not allowed to access that page!"
-      redirect_to root_url
-    end
   end
 
   def broker
-    @lead = Lead.find_by(id: params[:lead_id])
-    if current_user.present? && current_user == @lead.receiving_agent.broker.user
-      render 'broker'
-    else
-      flash[:error] = "You are not allowed to access that page!"
-      redirect_to root_url
-    end
   end
 
   def agent_reply
+
   end
 
   def broker_apply
   end
+
+  private
+
+    def set_lead
+      @lead = Lead.find_by(id: params[:lead_id])
+    end
+
+    def only_agent
+      unless current_user.present? && current_user == @lead.receiving_agent.user
+        flash[:error] = "You are not allowed to access that page!"
+        redirect_to root_url
+      end
+    end
+
+    def only_broker
+      unless current_user.present? && current_user == @lead.receiving_agent.broker.user
+        flash[:error] = "You are not allowed to access that page!"
+        redirect_to root_url
+      end
+    end
 end
