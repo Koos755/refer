@@ -4,5 +4,7 @@ class Agent < ActiveRecord::Base
   delegate :name, to: :user
   delegate :mobile, to: :user
   delegate :email, to: :user
+  belongs_to :brokerage
+  has_one :broker, :through => :brokerage
 
 end
