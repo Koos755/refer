@@ -1,17 +1,40 @@
-<h1>Agent Accept</h1>
+&nbsp;
 
-<p>You have a lead from <%= @lead.sending_agent.name %></p>
+<div class="row">
+  <div class="large-2 columns">&nbsp;</div>
+  <div class="large-6 columns">
+    <h1>Accept Referral?</h1>
 
-<p>Once you and your broker accept the lead you will get the contact details:</p>
+    <p>You have a real estate referral offer from <%= @lead.sending_agent.name %>.</p>
 
-<ul>
-  <li>Name: <%= @lead.user.name %></li>
-  <li>Email: availible once accepted</li>
-  <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
-  <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
-  <%= "<li>Mobile Phone: availible once accepted</li>".html_safe if @lead.user.mobile.present? %>
-  <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
-</ul>
+    <p>Once you and your broker accept, you will receive contact details:</p>
 
-<%= link_to 'Accept', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "small button secondary success" %>
-<%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "small button secondary error" %>
+    <ul>
+      <li>Name: <%= @lead.user.name %></li>
+      <li>Email: (Available once lead is accepted)</li>
+      <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
+      <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if @lead.user.mobile.present? %>
+      <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
+      <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+    </ul>
+
+    <%= link_to 'Accept', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), class: "small button secondary success" %>
+    <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), class: "small button secondary error" %>
+
+  </div>
+
+  <div class="large-4 columns">
+&nbsp;
+&nbsp;
+    <div class="callout panel">
+      <h4>What happens next?</h4>
+      <br>
+      <p>If you accept, the referral is sent on to your broker for approval.</p>
+      <p>If you decline, the referral is sent back to the referring agent.</p>
+    </div>
+
+  </div>
+
+</div>
+
+
