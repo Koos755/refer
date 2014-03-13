@@ -27,6 +27,10 @@ Refer::Application.routes.draw do
   get "token/:value" => 'token#value', as: 'token'
   get "agent/accept" => 'token#agent', as: 'agent_accept'
   get "broker/accept" => 'token#broker', as: 'broker_accept'
+
+  get 'sessions/reset' => 'sessions#request_reset', as: 'reset'
+  post 'sessions/reset' => 'sessions#submit_reset'
+  delete 'sessions/reset' => 'sessions#new_password'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

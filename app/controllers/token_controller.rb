@@ -1,4 +1,5 @@
 class TokenController < ApplicationController
+
   def value
     token = Token.find_by(value: params[:value])
     if token.token_type == 'lead_agent'
@@ -6,6 +7,10 @@ class TokenController < ApplicationController
     elsif token.token_type == 'lead_broker'
       redirect_to broker_accept_url
     elsif token.token_type == 'password_reset'
+      if token.created_at > 7200
+        render 'value'
+      end
+      render 'new_password'
     end
   end
 
