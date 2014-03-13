@@ -1,6 +1,5 @@
 Refer::Application.routes.draw do
 
-  get "token/value"
   root 'home#index'
 
   get "wizard/step1", as: 'step1'
@@ -25,8 +24,11 @@ Refer::Application.routes.draw do
   get "users/update"
 
   get "token/:value" => 'token#value', as: 'token'
-  get "agent/accept" => 'token#agent', as: 'agent_accept'
-  get "broker/accept" => 'token#broker', as: 'broker_accept'
+
+  get "lead_accept/agent/step1" => 'lead_accept#agent', as: 'agent_step1'
+  get "lead_accept/broker/step1" => 'lead_accept#agent', as: 'broker_step1'
+  get "lead_accept/agent_reply", as: 'agent_reply'
+  get "lead_accept/broker_apply", as: 'broker_reply'
 
   get 'sessions/reset' => 'sessions#request_reset', as: 'reset'
   post 'sessions/reset' => 'sessions#submit_reset'

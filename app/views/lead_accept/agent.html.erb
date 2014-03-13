@@ -1,0 +1,17 @@
+<h1>Agent Accept</h1>
+
+<p>You have a lead from <%= @lead.sending_agent.name %></p>
+
+<p>Once you and your broker accept the lead you will get the contact details:</p>
+
+<ul>
+  <li>Name: <%= @lead.user.name %></li>
+  <li>Email: availible once accepted</li>
+  <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
+  <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
+  <%= "<li>Mobile Phone: availible once accepted</li>".html_safe if @lead.user.mobile.present? %>
+  <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+</ul>
+
+<%= link_to 'Accept', agent_reply_url({accept: 'yes'}), class: "small button secondary success" %>
+<%= link_to 'Decline', agent_reply_url({accept: 'no'}), class: "small button secondary error" %>
