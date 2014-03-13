@@ -18,8 +18,8 @@
       <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
     </ul>
 
-    <%= link_to 'Accept Referral', agent_reply_url({accept: 'yes'}), class: "small button secondary success" %>
-    <%= link_to 'Decline Referral', agent_reply_url({accept: 'no'}), class: "small button secondary error" %>
+    <%= link_to 'Accept', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), class: "small button secondary success" %>
+    <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), class: "small button secondary error" %>
 
   </div>
 
@@ -36,3 +36,8 @@
   </div>
 
 </div>
+
+
+<!-- I had this before -->
+    <%#= link_to 'Accept Referral', agent_reply_url({accept: 'yes'}), class: "small button secondary success" %>
+    <%#= link_to 'Decline Referral', agent_reply_url({accept: 'no'}), class: "small button secondary error" %>

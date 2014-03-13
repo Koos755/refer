@@ -1,0 +1,7 @@
+<h1>Please give us your broker details:</h1>
+
+<%= render 'users/form', user: @user, destination_url: @url, button: "Request Broker's approval" %>
+
+<script type="text/javascript">
+  $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
+</script>

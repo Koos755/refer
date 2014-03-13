@@ -21,7 +21,7 @@
   <%= render 'users/form', user: @user, destination_url: step3_create_url, button: "Next Step" %>
 
   <script type="text/javascript">
-    $('#user_password').replaceWith('<%= j(render 'hidden', lead_id: @lead.id) %>');
+    $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
   </script>
 
   </div>
