@@ -11,7 +11,23 @@ class LeadAcceptController < ApplicationController
   end
 
   def agent_reply
+    if params[:accept] =='yes'
+      @lead.accepted_by_agent_time = Time.now
+      @lead.accepted_by_agent = true
+      if @lead.save
+        redirect_to agent_step2_url({lead_id: @lead.id})
+      end
+    elsif params[:accept] =='no'
+      @lead.accepted_by_agent = false
+      if @lead.save
+        #TODO add decline path
+      end
+    end
+  end
 
+  def agent_step2
+    @user = User.new
+    @url = agent_step3_url
   end
 
   def broker_apply
