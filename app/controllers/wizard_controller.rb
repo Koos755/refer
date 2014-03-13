@@ -1,4 +1,7 @@
 class WizardController < ApplicationController
+
+  before_action :set_lead, only: [:step3, :step3_create, :step4, :step4_create, :step5]
+
   def step1
     @user = User.new
     if current_user.present?
@@ -35,12 +38,10 @@ class WizardController < ApplicationController
 
   def step3
     @user = User.new
-    @lead = Lead.find_by(id: params[:lead_id])
   end
 
   def step3_create
     @user = User.find_by(email: params[:user][:email])
-    lead = Lead.find_by(id: params[:user][:lead_id])
     if @user.present?
       unless @user.agent.present?
         @user.create_with_agent
@@ -50,17 +51,15 @@ class WizardController < ApplicationController
       @user.create_password
       @user.create_with_agent
     end
-    lead.receiving_agent_id = @user.agent.id
-    lead.save
-    redirect_to step4_url({lead_id: lead.id})
+    @lead.receiving_agent_id = @user.agent.id
+    @lead.save
+    redirect_to step4_url({lead_id: @lead.id})
   end
 
   def step4
-    @lead = Lead.find_by(id: params[:lead_id])
   end
 
   def step4_create
-    @lead = Lead.find_by(id: params[:user][:lead_id])
     if params[:accepted_terms] == "true"
       @lead.accepted_terms = Time.now
       @lead.save
@@ -74,7 +73,6 @@ class WizardController < ApplicationController
   end
 
   def step5
-    @lead = Lead.find_by(id: params[:lead_id])
   end
 
   private
@@ -89,5 +87,9 @@ class WizardController < ApplicationController
 
   def step3_params
     params.require(:user).permit(:name,:email)
+  end
+
+  def set_lead
+    @lead = Lead.find_by(id: params[:lead_id])
   end
 end

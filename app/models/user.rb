@@ -19,4 +19,10 @@ class User < ActiveRecord::Base
     agent.user_id = self.id
     agent.save
   end
+
+  def create_with_broker
+    broker = Broker.new
+    broker.user_id = self.id
+    broker.save
+  end
 end

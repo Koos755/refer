@@ -71,7 +71,7 @@
     <%= form_tag(step4_create_url, method: :post) do %>
       <%= check_box_tag :accepted_terms, true, false %>
       <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
-      <%= render 'hidden', lead_id: @lead.id %>
+      <%= render 'layouts/hidden', lead_id: @lead.id %>
       <%= button_tag 'Send Referral' %>
     <% end %>
 

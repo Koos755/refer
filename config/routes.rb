@@ -26,8 +26,8 @@ Refer::Application.routes.draw do
   get "token/:value" => 'token#value', as: 'token'
 
   get "lead_accept/agent/step1" => 'lead_accept#agent', as: 'agent_step1'
-  get "lead_accept/agent/step2" => 'lead_accept#agent_step2', as: 'agent_step2'
-  get "lead_accept/agent/step3" => 'lead_accept#agent_step3', as: 'agent_step3'
+  post "lead_accept/agent/step2" => 'lead_accept#agent_step2', as: 'agent_step2'
+  post "lead_accept/agent/step3" => 'lead_accept#agent_step3', as: 'agent_step3'
   get "lead_accept/broker/step1" => 'lead_accept#agent', as: 'broker_step1'
   get "lead_accept/agent_reply", as: 'agent_reply'
   get "lead_accept/broker_apply", as: 'broker_reply'

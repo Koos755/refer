@@ -30,6 +30,20 @@ class LeadAcceptController < ApplicationController
     @url = agent_step3_url
   end
 
+  def agent_step3
+    @user = User.find_by(email: params[:user][:email])
+    if @user.present?
+      unless @user.broker.present?
+        @user.create_with_broker
+      end
+    else
+      @user = User.new(step3_params)
+      @user.create_password
+      @user.create_with_broker
+    end
+    #TODO create token and send email to broker
+  end
+
   def broker_apply
   end
 
@@ -51,5 +65,9 @@ class LeadAcceptController < ApplicationController
         flash[:error] = "You are not allowed to access that page!"
         redirect_to root_url
       end
+    end
+
+    def step3_params
+      params.require(:user).permit(:name,:email)
     end
 end
