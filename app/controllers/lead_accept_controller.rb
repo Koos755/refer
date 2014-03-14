@@ -27,7 +27,7 @@ class LeadAcceptController < ApplicationController
 
   def agent_step2
     @user = User.new
-    @url = agent_step3_url
+    @url = agent_step3_url({lead_id: @lead.id})
   end
 
   def agent_step3
@@ -39,9 +39,12 @@ class LeadAcceptController < ApplicationController
     else
       @user = User.new(step3_params)
       @user.create_password
-      @user.create_with_broker
+      @user.create_with_broker(params[:brokerage_name])
     end
-    #TODO create token and send email to broker
+    token = Token.new
+    token.create_lead_broker_token(@lead, @user)
+    WizardMail.send_lead_broker(@lead, token).deliver
+    render 'success_agent'
   end
 
   def broker_apply
