@@ -41,9 +41,9 @@ class LeadAcceptController < ApplicationController
       @user.create_password
       @user.create_with_broker(params[:brokerage_name])
     end
-    token = Token.new
-    token.create_lead_broker_token(@lead, @user)
-    WizardMail.send_lead_broker(@lead, token).deliver
+    @token = Token.new
+    @token.create_lead_broker_token(@lead, @user)
+    WizardMail.send_lead_broker(@lead, @token).deliver
     render 'success_agent'
   end
 
