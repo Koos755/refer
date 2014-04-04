@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # front end framework
+gem "twitter-bootstrap-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
