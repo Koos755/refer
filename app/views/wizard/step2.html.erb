@@ -1,20 +1,15 @@
-&nbsp;
-
 <div class="row">
-  <div class="large-3 columns">&nbsp;</div>
-  <div class=" large-9 columns">
-  <div class="button-bar">
-    <ul class="button-group [radius round]">
-      <li><a href="#" class="small button secondary success">1) Client details</a></li>
-      <li><a href="#" class="small button secondary disabled">2) Receiving agent</a></li>
-      <li><a href="#" class="small button secondary disabled">3) Review/Send</a></li>
+  <div class="col-md-4 col-md-offset-4">
+    <p>
+      <button type="button" class="btn btn-primary btn-sm">1) Client details</button>
+      <button type="button" class="btn btn-default btn-sm">2) Receiving agent</button>
+      <button type="button" class="btn btn-default btn-sm">3) Review/Send</button>
+    </p>
   </div>
-  </div>
-  <div class="large-3 columns">&nbsp;</div>
 </div>
 
 <div class="row">
-  <div class="large-6 columns">
+  <div class="col-md-6">
     <h4>Your Referral Client's Details</h4>
     <%= render 'layouts/errors', object: @wizard %>
       <%= form_for(@wizard, url: step2_create_url) do |f|%>
@@ -31,9 +26,9 @@
     <% end %>
   </div>
 
-    <div class="large-6 columns">
-      <h5>The Basics</h5>
-      <div class="callout panel">
+  <div class="col-md-6">
+    <h5>The Basics</h5>
+      <div class="well">
       <p>The referral fee is <strong>25%</strong> of the total commission that the Receiving Broker/Agent receives from a successful transaction.</p>
       <p>This fee is due no later than 15 business days after the transaction is completed.</p>
 

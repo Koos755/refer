@@ -1,32 +1,19 @@
-&nbsp;
+<div class="container">
 
-
-<!-- <div class="row">
-  <div class="large-4 columns">&nbsp;</div>
-  <div class="large-4 columns">
-    <h4>Send a Referral</h4>
-  </div>
-  <div class="large-4 columns">&nbsp;</div>
-</div> -->
-
-<div class="row">
-
-  <div class="large-6 columns">
-    <div class="callout panel">
+  <div class="col-md-8">
+    <div class="well">
       <h5>Register to Send a Referral</h5>
       <%= render 'layouts/errors', object: @user %>
     <%= render 'users/form', user: @user, destination_url: step1_create_url, button: "Register" %>
     </div>
   </div>
 
-  <div class="large-6 columns">
+  <div class="col-md-8">
     <h5>Already registered? Sign in:</h5>
     <%= render 'sessions/form' %>
   </div>
 
 </div>
-
-
 
 
 

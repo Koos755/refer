@@ -1,39 +1,23 @@
-&nbsp;
-
 <div class="row">
-  <div class="large-3 columns">&nbsp;</div>
-  <div class=" large-9 columns">
-  <div class="button-bar">
-    <ul class="button-group [radius round]">
-      <li><a href="#" class="small button secondary disabled">1) Client details</a></li>
-      <li><a href="#" class="small button secondary disabled">2) Receiving agent</a></li>
-      <li><a href="#" class="small button secondary success">3) Review/Send</a></li>
+  <div class="col-md-4 col-md-offset-4">
+    <p>
+      <button type="button" class="btn btn-default btn-sm">1) Client details</button>
+      <button type="button" class="btn btn-default btn-sm">2) Receiving agent</button>
+      <button type="button" class="btn btn-primary btn-sm">3) Review/Send</button>
+    </p>
   </div>
+</div><!-- end row 1 -->
+
+<div class="col-md-6 col-md-offset-3">
+  <h3>Referral Sent</h3>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+  <div class="well"><p>Congratulations! Your referral is on its way to <%= @lead.receiving_agent.user.name %>.</p>
+    <p>Look for an email update soon.</p>
+
+      <p><em>To be on the safe side, add <strong>noreply@surerefer.com</strong> to your <a href="http://www.benchmarkemail.com/help-FAQ/answer/what-is-whitelisting-how-do-i-add-email-addresses-to-my-safe-senders-list-in-my-email-client-or-my-security-software">whitelist/approved senders</a>. This will make sure messages from SureRefer don't get marked as Spam or Junk.</em></p>
   </div>
-  <div class="large-3 columns">&nbsp;</div>
 </div>
 
 
-<div class="row">
-  <div class="large-3 columns">&nbsp;</div>
-  <div class="large-6 columns"><h3>Referral Sent</h3></div>
-  <div class="large-3 columns">&nbsp;</div>
-</div>
-
-<div class="row">
-  <div class="large-3 columns">&nbsp;</div>
-  <div class="large-6 columns">
-    <div class="callout panel"><p>Congratulations! Your referral is on its way to <%= @lead.receiving_agent.user.name %>.</p>
-      <p>Look for an email update soon.</p>
-
-        <p><em>To be on the safe side, add <strong>noreply@surerefer.com</strong> to your <a href="http://www.benchmarkemail.com/help-FAQ/answer/what-is-whitelisting-how-do-i-add-email-addresses-to-my-safe-senders-list-in-my-email-client-or-my-security-software">whitelist/approved senders</a>. This will make sure messages from SureRefer don't get marked as Spam or Junk.</em></p>
-</div>
-  </div>
-  <div class="large-3 columns">&nbsp;</div>
-</div>
-
-<div class="row">
-  <div class="large-3 columns">&nbsp;</div>
-  <div class="large-6 columns"><a href="#" class="button">See Your Referrals</a></div>
-  <div class="large-3 columns">&nbsp;</div>
-</div>
