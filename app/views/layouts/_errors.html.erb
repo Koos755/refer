@@ -1,11 +1,7 @@
 <% if object.errors.any? %>
-  <div class="alert">
+  <div class="alert alert-danger">
 
-    <span class="[success alert primary] label">Sorry, there were <%= pluralize(object.errors.count, "error") %>:</span>
-    <ul>
-      <% object.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <span class="">Sorry, <%= pluralize(object.errors.count, "error") %>:</span>
+
   </div>
 <% end %>

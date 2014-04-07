@@ -9,6 +9,7 @@
 </div><!-- end row 1 -->
 
 <h3>Review and Send</h3>
+<hr>
 
 <div class="row">
 <div class="col-md-4">
@@ -32,8 +33,9 @@
 </div>
 
 <div class="col-md-4">
-<h5>What happens next?</h5>
+  <br>
   <div class="well">
+    <h4>What happens next?</h4>
   <p>We send the referral to the Receiving Agent. When they accept, it's sent to their managing broker for approval. You'll be notified by email every step of the way.</p>
   </div>
 </div>
@@ -44,7 +46,7 @@
     <%= check_box_tag :accepted_terms, true, false %>
     <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
     <%= render 'layouts/hidden', lead_id: @lead.id %>
-    <%= button_tag 'Send Referral' %>
+    <%= button_tag 'Send Referral', class: "btn btn-primary" %>
   <% end %>
   </div>
 </div>
