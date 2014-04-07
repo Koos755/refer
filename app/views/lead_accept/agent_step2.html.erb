@@ -1,31 +1,23 @@
-  &nbsp;
+<h3>Almost done!</h3>
 
 <div class="row">
-  <div class="large-2 columns">&nbsp;</div>
-  <div class="large-6 columns">
-
-  <h3>Almost done!</h3>
-  <h5>Lastly, we need your managing broker's details:</h5>
-
-  <%= render 'users/form', user: @user, destination_url: @url, button: "Request Broker's approval" %>
-
-  <script type="text/javascript">
-    $('.button').before('<%= j(render 'layouts/brokerage_name') %>');
-    $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
-  </script>
-
+  <div class="col-md-6">
+    <h5>Lastly, we need your managing broker's details:</h5>
+    <%= render 'users/form', user: @user, destination_url: @url, button: "Request Broker's approval" %>
+    <script type="text/javascript">
+      $('.button').before('<%= j(render 'layouts/brokerage_name') %>');
+      $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
+    </script>
   </div>
 
-  <div class="large-4 columns">
-  &nbsp;
-  &nbsp;
-    <div class="callout panel">
-      <h4>What happens next?</h4>
-      <br>
-      <p>The referral will be sent to your broker for approval.</p>
-      <p>If your broker approves the referral, contact information for the referral will be sent to you.</p>
+&nbsp;
+
+<div class="col-md-6">
+  <div class="well">
+    <h4>What happens next?</h4>
+    <br>
+    <p>The referral will be sent to your broker for approval.</p>
+    <p>If your broker approves the referral, contact information for the referral will be sent to you.</p>
     </div>
-
-  </div>
-
+    </div>
 </div>

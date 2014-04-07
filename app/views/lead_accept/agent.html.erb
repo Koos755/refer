@@ -1,40 +1,34 @@
-  &nbsp;
+<h1>Accept Referral?</h1>
 
 <div class="row">
-  <div class="large-2 columns">&nbsp;</div>
-  <div class="large-6 columns">
-    <h1>Accept Referral?</h1>
+  <div class="col-md-6">
+  </br>
+  <p>You have a real estate referral offer from <%= @lead.sending_agent.name %>.</p>
 
-    <p>You have a real estate referral offer from <%= @lead.sending_agent.name %>.</p>
+  <p>Once you and your broker accept, you will receive contact details.</p>
 
-    <p>Once you and your broker accept, you will receive contact details:</p>
+  <ul>
+    <li>Referral Name: <%= @lead.user.name %></li>
+    <li>Email: (Available once lead is accepted)</li>
+    <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if @lead.user.mobile.present? %>
+    <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
+    <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
+    <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+  </ul>
 
-    <ul>
-      <li>Referral Name: <%= @lead.user.name %></li>
-      <li>Email: (Available once lead is accepted)</li>
-      <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if @lead.user.mobile.present? %>
-      <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
-      <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
-      <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
-    </ul>
-
-    <%= link_to 'Accept', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "small button secondary success" %>
-    <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "small button secondary error" %>
-
-  </div>
-
-  <div class="large-4 columns">
-&nbsp;
-&nbsp;
-    <div class="callout panel">
-      <h4>What happens next?</h4>
-      <br>
-      <p>If you accept, the referral will be sent on to your broker for approval.</p>
-      <p>If you decline, the referral is sent back to the referring agent.</p>
-    </div>
+  </br>
+  <%= link_to 'Accept', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
+  <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
 
   </div>
 
+<div class="col-md-6">
+  <div class="well">
+    <h4>What happens next?</h4>
+    <br>
+    <p>If you accept, the referral will be sent on to your broker for approval.</p>
+    <p>If you decline, the referral is sent back to the referring agent.</p>
+  </div>
 </div>
 
-
+</div><!-- end row -->
