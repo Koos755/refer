@@ -2,48 +2,66 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><%= content_for?(:title) ? yield(:title) : "SureRefer" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+
   </head>
 
-  <body>
+<body>
 
-<!-- BEGIN NAV -->
+<!-- BEGIN BOOTSTRAP NAV -->
 
-  <nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to "SureRefer", root_url %></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "SureRefer", root_url, class: "navbar-brand" %>
+    </div>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <% if current_user.present? %>
-        <li class="inactive"><%= link_to "#{current_user.name}", about_index_url %></li>
-        <li class="active"><%= link_to "Sign out", sessions_url, method: :delete %></li>
-      <% else %>
-        <li class="active"><%= link_to "Sign up / Sign in", step1_url %></li>
-      <% end %>
-    </ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <% if current_user.present? %>
+            <li><%= link_to "My Referrals", about_index_url %></li>
+          <% else %>
+          <% end %>
+        </li>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
+        <li><%= link_to "About / FAQ", about_index_url %></li>
 
-      <% if current_user.present? %>
-        <li><%= link_to "My Referrals", about_index_url %></li>
-      <% else %>
-      <% end %>
+          </ul>
+        </li>
+      </ul>
 
-      <li><%= link_to "About / FAQ", about_index_url %></li>
-    </ul>
-  </section>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <% if current_user.present? %>
+          <li><%= link_to "#{current_user.name}", about_index_url %></li>
+          <li><%= link_to "Sign out", sessions_url, method: :delete %></li>
+          <% else %>
+          <li><%= link_to "Sign up / Sign in", step1_url %></li>
+        <% end %>
+
+        </li>
+
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
 
 <!-- END NAV -->
