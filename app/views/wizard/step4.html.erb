@@ -14,26 +14,48 @@
 <div class="row">
 <div class="col-md-4">
   <h4>Client:</h4>
+
   <ul>
     <li>Name: <%= @lead.user.name %></li>
-    <li>Email: <%= @lead.user.email %></li>
-    <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
-    <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
-    <li>Mobile Phone: <%= @lead.user.mobile %></li>
+    <li>Email*: <%= @lead.user.email %></li>
+    <li>Mobile Phone*: <%= @lead.user.mobile %></li>
+    <%= "<li>Buying</li>".html_safe if @lead.buying %>
+    <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
   </ul>
-</div>
+  <small>(*Will not be shared with receiving agent until referral is accepted)</small>
 
-<div class="col-md-4">
-  <h4>Receiving Agent:</h4>
+    <h4>Receiving Agent:</h4>
   <ul>
     <li>Name: <%= @lead.receiving_agent.user.name %></li>
     <li>Email: <%= @lead.receiving_agent.user.email %></li>
   </ul>
+    <br>
+    <p style="color:red">^ ADD LOCATION/COMMENTS ^</p>
 </div>
 
 <div class="col-md-4">
-  <br>
+  <div class="panel panel-default">
+  <div class="panel-body">
+
+    <h3>Referral Summary:</h3>
+      <p>The requested referral fee is <25%>.</p>
+      <p>Read full <a href="#">Terms and Conditions</a>.</p>
+      <%= form_tag(step4_create_url, method: :post) do %>
+        <%= check_box_tag :accepted_terms, true, false %>
+        <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
+        <%= render 'layouts/hidden', lead_id: @lead.id %>
+        <%= button_tag 'Send Referral', class: "btn btn-primary" %>
+      <% end %>
+      <br>
+      <p style="color:red">^ ADD REFERRAL FEE ^</p>
+      <p style="color:red">^ SHOULD WE ALLOW FLAT FEE (VS. %)? ^</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-md-4">
   <div class="well">
     <h4>What happens next?</h4>
   <p>We send the referral to the Receiving Agent. When they accept, it's sent to their managing broker for approval. You'll be notified by email every step of the way.</p>
@@ -42,11 +64,8 @@
 
 <div class="row">
   <div class="col-md-12">
-  <%= form_tag(step4_create_url, method: :post) do %>
-    <%= check_box_tag :accepted_terms, true, false %>
-    <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
-    <%= render 'layouts/hidden', lead_id: @lead.id %>
-    <%= button_tag 'Send Referral', class: "btn btn-primary" %>
-  <% end %>
+
   </div>
 </div>
+
+

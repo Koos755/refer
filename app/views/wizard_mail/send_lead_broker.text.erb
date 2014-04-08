@@ -1,6 +1,6 @@
 Hello <%= @token.user.name %>,
 
-Your agent <%= @lead.receiving_agent.user.name %> has accepted a referral, and it needs your approval!
+Your agent <%= @lead.receiving_agent.user.name %> has accepted a real estate referral, and it needs your approval!
 
 To review and approve, just visit this link on SureRefer:
 
@@ -8,8 +8,8 @@ To review and approve, just visit this link on SureRefer:
 
 REFERRAL DETAILS
 
-Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling && @lead.buying %><%= "Buying" if @lead.buying %> in your local area
-Price range: <%= @lead.price_range_start %> to <%= @lead.price_range_end %>
+Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling && @lead.buying %><%= "Buying" if @lead.buying %> in your local area.
+Price range: <%= @lead.price_range_start %> to <%= @lead.price_range_end %>.
 
 You can learn more about SureRefer in our Frequently Asked Questions (FAQ):
 http://www.surerefer.com/about
@@ -23,3 +23,4 @@ SureRefer makes referrals easy.
 www.surerefer.com
 
 © 2014 SureRefer. PO Box 580482, Minneapolis, MN 55458
+----------------------------------------------------------------------------------

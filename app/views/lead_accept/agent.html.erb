@@ -3,16 +3,16 @@
 <div class="row">
   <div class="col-md-6">
   </br>
-  <p>You have a real estate referral offer from <%= @lead.sending_agent.name %>.</p>
+  <p>You have a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
   <p>Once you and your broker accept, you will receive contact details.</p>
 
   <ul>
-    <li>Referral Name: <%= @lead.user.name %></li>
+    <li>Client Name: <%= @lead.user.name %></li>
     <li>Email: (Available once lead is accepted)</li>
     <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if @lead.user.mobile.present? %>
-    <%= "<li>Buying: #{@lead.buying}</li>".html_safe if @lead.buying %>
-    <%= "<li>Selling: #{@lead.selling}</li>".html_safe if @lead.selling %>
+    <%= "<li>Buying</li>".html_safe if @lead.buying %>
+    <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
   </ul>
 

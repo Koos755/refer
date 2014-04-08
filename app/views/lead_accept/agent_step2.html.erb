@@ -2,7 +2,8 @@
 
 <div class="row">
   <div class="col-md-6">
-    <h5>Lastly, we need your managing broker's details:</h5>
+    <h5>Lastly, we need your managing broker's details.</h5>
+    <p>If you are your own broker, fill in your information.</p>
     <%= render 'users/form', user: @user, destination_url: @url, button: "Request Broker's approval" %>
     <script type="text/javascript">
       $('.button').before('<%= j(render 'layouts/brokerage_name') %>');
