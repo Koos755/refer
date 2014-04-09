@@ -48,6 +48,18 @@ class LeadAcceptController < ApplicationController
   end
 
   def broker_reply
+    if params[:accept] =='yes'
+      @lead.accepted_by_broker_time = Time.now
+      @lead.accepted_by_broker = true
+      if @lead.save
+        render 'success_broker'
+      end
+    elsif params[:accept] =='no'
+      @lead.accepted_by_agent = false
+      if @lead.save
+        #TODO add decline path
+      end
+    end
   end
 
   private

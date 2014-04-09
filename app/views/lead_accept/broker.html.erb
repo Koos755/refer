@@ -17,8 +17,8 @@
   </ul>
 
   </br>
-  <%= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
-  <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
+  <%= link_to 'Approve Referral', broker_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
+  <%= link_to 'Decline', broker_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
 
   </div>
 
