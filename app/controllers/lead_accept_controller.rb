@@ -52,6 +52,7 @@ class LeadAcceptController < ApplicationController
       @lead.accepted_by_broker_time = Time.now
       @lead.accepted_by_broker = true
       if @lead.save
+        WizardMail.lead_accepted(@lead).deliver
         render 'success_broker'
       end
     elsif params[:accept] =='no'

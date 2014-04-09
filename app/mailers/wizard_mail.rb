@@ -21,4 +21,14 @@ class WizardMail < ActionMailer::Base
     mail( :to => token.user.email,
       :subject => "Approval of referral requested" )
   end
+
+  def lead_accepted(lead)
+    @lead = lead
+    @receiving_agent = @lead.receiving_agent
+    @sending_agent = @lead.sending_agent
+    @broker = @receiving_agent.broker
+    mail( :to => [@receiving_agent.email, @sending_agent.email, @broker.email]
+      :subject => "#{@sending_agent.name}/#{@receiving_agent.name} referral accepted" )
+  end
+
 end
