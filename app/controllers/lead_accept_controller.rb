@@ -39,7 +39,7 @@ class LeadAcceptController < ApplicationController
     else
       @user = User.new(step3_params)
       @user.create_password
-      @user.create_with_broker(params[:brokerage_name])
+      @user.create_with_broker(params[:brokerage_name], @lead)
     end
     @token = Token.new
     @token.create_lead_broker_token(@lead, @user)
