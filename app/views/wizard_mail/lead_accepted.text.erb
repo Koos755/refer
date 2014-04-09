@@ -1,11 +1,23 @@
 Hello,
 
-The referral from <%= @sendding_agent.name %> to <%= @receiving_agent.name %> (for <%= @lead.user.name %>) has been accepted by all parties.
+The referral from <%= @sending_agent.name %> to <%= @receiving_agent.name %> (for <%= @lead.user.name %>) has been accepted by all parties.
 
-Upon a successful transaction with Client Name, 25% of the total commission received by Receiving Brokerage Name will be due to Sending Brokerage Name within 15 business days.
+Lead Details:
+
+Client Name:
+
+<%= @lead.name %>
+
+<%= @lead.email if @lead.email.present? %>
+
+<%= @lead.mobile if @lead.mobile.present? %>
+
+Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling && @lead.buying %><%= "Buying" if @lead.buying %> in your local area,
+<%= "Price range: #{@lead.price_range_start} to #{@lead.price_range_end}" if @lead.price_range_start.present? && @lead.price_range_end.present? %>
 
 To review the referral and print a copy:
-http://www.surerefer.com/…
+<%= @url %>
+
 
 Thanks for using SureRefer, and good fortune!
 

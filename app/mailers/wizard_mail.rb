@@ -27,7 +27,8 @@ class WizardMail < ActionMailer::Base
     @receiving_agent = @lead.receiving_agent
     @sending_agent = @lead.sending_agent
     @broker = @receiving_agent.broker
-    mail( :to => [@receiving_agent.email, @sending_agent.email, @broker.email]
+    @url = lead_url(@lead)
+    mail( :to => [@receiving_agent.email, @sending_agent.email, @broker.email],
       :subject => "#{@sending_agent.name}/#{@receiving_agent.name} referral accepted" )
   end
 
