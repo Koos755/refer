@@ -47,7 +47,7 @@ class LeadAcceptController < ApplicationController
     render 'success_agent'
   end
 
-  def broker_apply
+  def broker_reply
   end
 
   private
