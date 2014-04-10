@@ -30,6 +30,7 @@ class WizardController < ApplicationController
     @wizard = Wizard.new(step2_params)
     if @wizard.valid?
       @wizard.save(current_user)
+
       redirect_to step3_url({lead_id: @wizard.lead_id})
     else
       render 'step2'
@@ -52,6 +53,7 @@ class WizardController < ApplicationController
       @user.create_with_agent
     end
     @lead.receiving_agent_id = @user.agent.id
+    @lead.referral_percent = params[:referral_percent]
     @lead.save
     redirect_to step4_url({lead_id: @lead.id})
   end
@@ -82,7 +84,7 @@ class WizardController < ApplicationController
   end
 
   def step2_params
-    params.require(:wizard).permit(:name, :email, :mobile, :buying, :selling, :price_range_start, :price_range_end)
+    params.require(:wizard).permit(:name, :email, :mobile, :buying, :selling, :price_range_start, :price_range_end, :comment, :location)
   end
 
   def step3_params

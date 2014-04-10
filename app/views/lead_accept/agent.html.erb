@@ -5,6 +5,8 @@
   </br>
   <p>You have a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
+  <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %> of the commission.</p>
+
   <p>Once you and your broker accept, you will receive contact details.</p>
 
   <ul>
@@ -14,6 +16,7 @@
     <%= "<li>Buying</li>".html_safe if @lead.buying %>
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+    <%= "<li>Location</li>: #{@lead.location}".html_safe if @lead.location.present? %>
   </ul>
 
   </br>

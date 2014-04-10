@@ -16,9 +16,9 @@
   <h4>Client:</h4>
 
   <ul>
-    <li>Name: <%= @lead.user.name %></li>
-    <li>Email*: <%= @lead.user.email %></li>
-    <li>Mobile Phone*: <%= @lead.user.mobile %></li>
+    <li>Name: <%= @lead.name %></li>
+    <li>Email*: <%= @lead.email %></li>
+    <li>Mobile Phone*: <%= @lead.mobile %></li>
     <%= "<li>Buying</li>".html_safe if @lead.buying %>
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
@@ -27,8 +27,8 @@
 
     <h4>Receiving Agent:</h4>
   <ul>
-    <li>Name: <%= @lead.receiving_agent.user.name %></li>
-    <li>Email: <%= @lead.receiving_agent.user.email %></li>
+    <li>Name: <%= @lead.receiving_agent.name %></li>
+    <li>Email: <%= @lead.receiving_agent.email %></li>
   </ul>
     <br>
     <p style="color:red">^ ADD LOCATION/COMMENTS ^</p>
@@ -39,7 +39,7 @@
   <div class="panel-body">
 
     <h3>Referral Summary:</h3>
-      <p>The requested referral fee is <25%>.</p>
+      <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %>.</p>
       <p>Read full <a href="#">Terms and Conditions</a>.</p>
       <%= form_tag(step4_create_url, method: :post) do %>
         <%= check_box_tag :accepted_terms, true, false %>

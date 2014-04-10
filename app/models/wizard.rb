@@ -3,7 +3,7 @@ class Wizard
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :name, :email, :mobile, :selling, :buying, :price_range_start, :price_range_end, :lead_id
+  attr_accessor :name, :email, :mobile, :selling, :buying, :price_range_start, :price_range_end, :lead_id, :location, :comment
 
   validates_presence_of :name
   validates_presence_of :email
@@ -42,6 +42,8 @@ class Wizard
     lead.buying = self.buying
     lead.price_range_start = self.price_range_start
     lead.price_range_end = self.price_range_end
+    lead.location = self.location
+    lead.comment = self.comment
     lead.save
     self.lead_id = lead.id
   end

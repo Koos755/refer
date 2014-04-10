@@ -23,6 +23,8 @@
 
         <%= f.text_field :price_range_start, placeholder: "Buying minimum price (Example: $250,000)", hide_label: true %>
         <%= f.text_field :price_range_end, placeholder: "Buying maximum price (Example: $400,000)", hide_label: true %>
+        <%= f.text_field :location, placeholder: "City, State", hide_label: true %>
+        <%= f.text_area :comment, placeholder: "Any additional information you would like to share with receiving agent", hide_label: true %>
         <%= f.button 'Next Step', class: "btn btn-primary" %>
     <% end %>
   </div>

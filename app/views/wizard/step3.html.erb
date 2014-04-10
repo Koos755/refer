@@ -16,6 +16,7 @@
 
     <script type="text/javascript">
       $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
+      $('<%= j(render 'layouts/referral_percent') %>').insertBefore('#button');
     </script>
 
   </div>
