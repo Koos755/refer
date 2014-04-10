@@ -16,7 +16,7 @@ If you want to verify the referral, feel free to contact the sending agent direc
 SENDING AGENT
 
 <%= @lead.sending_agent.name %>
-<%= "Mobile phone:".html_safe @lead.sending_agent.mobile %>
+<%= "Mobile phone:".html_safe if @lead.sending_agent.mobile %>
 <%= @lead.sending_agent.email %>
 
 You can learn more about SureRefer in our Frequently Asked Questions (FAQ):
