@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407215659) do
+ActiveRecord::Schema.define(version: 20140410205426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20140407215659) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "accepted_terms"
+    t.string   "location"
+    t.text     "comment"
   end
 
   create_table "tokens", force: true do |t|
