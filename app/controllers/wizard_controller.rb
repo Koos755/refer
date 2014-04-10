@@ -30,7 +30,6 @@ class WizardController < ApplicationController
     @wizard = Wizard.new(step2_params)
     if @wizard.valid?
       @wizard.save(current_user)
-
       redirect_to step3_url({lead_id: @wizard.lead_id})
     else
       render 'step2'

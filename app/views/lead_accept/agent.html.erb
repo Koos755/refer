@@ -16,11 +16,11 @@
     <%= "<li>Buying</li>".html_safe if @lead.buying %>
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
-    <%= "<li>Location</li>: #{@lead.location}".html_safe if @lead.location.present? %>
+    <%= "<li>Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
   </ul>
 
 <br>
-<p style="color:red">^ ADD REFERRAL FEE %, LOCATION/COMMENTS ^</p>
+<p style="color:red">^ LOCATION/COMMENTS ^</p>
 
   </br>
   <%= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
