@@ -35,6 +35,7 @@ Refer::Application.routes.draw do
   get 'sessions/reset' => 'sessions#request_reset', as: 'reset'
   post 'sessions/reset' => 'sessions#submit_reset'
   delete 'sessions/reset' => 'sessions#new_password'
+  get 'sessions/set_password' => 'sessions#set_password', as: 'set_password'
 
   resources :leads
   # The priority is based upon order of creation: first created -> highest priority.

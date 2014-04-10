@@ -1,0 +1,6 @@
+<% flash.each do |name, msg| %>
+  <div class="mt25 alert alert-<%= name == :notice ? "success" : "danger" %>">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= msg %>
+  </div>
+<% end %>
