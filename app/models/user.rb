@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     password = SecureRandom.urlsafe_base64(8)
     self.password = password
     self.password_confirmation = password
+    self.auto_password = true
     self.save
   end
 
