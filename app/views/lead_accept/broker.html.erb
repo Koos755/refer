@@ -1,12 +1,13 @@
-<h1>Aprrove Referral?</h1>
+<h1>Approve Referral?</h1>
 
 <div class="row">
   <div class="col-md-6">
   </br>
-  <p>Your agent <strong><%= @lead.receiving_agent.name %></strong> have received and accepted a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
+  <p>Your agent <strong><%= @lead.receiving_agent.name %></strong> has accepted a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
   <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %> of the commission.</p>
-  <p>Once you as the broker accept, <strong><%= @lead.receiving_agent.name %></strong> will receive contact details.</p>
+
+  <p>Once you approve this referral (as the managing broker), <strong><%= @lead.receiving_agent.name %></strong> will receive the client's contact details.</p>
 
   <ul>
     <li>Client Name: <%= @lead.user.name %></li>
@@ -18,6 +19,12 @@
     <%= "<li>Location</li>: #{@lead.location}".html_safe if @lead.location.present? %>
   </ul>
 
+<br>
+<p style="color:red">^ ADD REFERRAL FEE, LOCATION/COMMENTS ^</p>
+<p style="color:red">^ HIDE PRICE RANGE IF ONLY SELLING ^</p>
+<p style="color:red">^ MAKE ENTIRE (LONG-FORM) AGREEMENT ACCESSIBLE HERE SOMEHOW ^</p>
+<p style="color:red">^ BROKER MAY WANT MORE INFORMATION ABOUT THE SENDING AGENT/BROKERAGE AT THIS POINT TO VET THE LEAD ^</p>
+
   </br>
   <%= link_to 'Approve Referral', broker_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
   <%= link_to 'Decline', broker_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
@@ -28,8 +35,8 @@
   <div class="well">
     <h4>What happens next?</h4>
     <br>
-    <p>If you accept, the referral will be sent on to your broker for approval.</p>
-    <p>If you decline, the referral is sent back to the referring agent.</p>
+    <p>If you accept, both agents will be notified.</p>
+    <p>If you decline, both agents will be notified and the referral will be returned to the referring agent.</p>
   </div>
 </div>
 

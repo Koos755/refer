@@ -4,7 +4,7 @@ class WizardMail < ActionMailer::Base
   def send_signup_email(user)
     @user = user
     mail( :to => @user.email,
-    :subject => 'Thanks for signing up for our amazing app' )
+    :subject => 'Thanks for signing up for SureRefer' )
   end
 
   def send_lead_receiving_agent(lead, token)
@@ -19,7 +19,7 @@ class WizardMail < ActionMailer::Base
     @token = token
     @url = token_url(token.value)
     mail( :to => token.user.email,
-      :subject => "Approval of referral requested" )
+      :subject => "#{@lead.receiving_agent.name}'s referral needs your approval" )
   end
 
   def lead_accepted(lead)

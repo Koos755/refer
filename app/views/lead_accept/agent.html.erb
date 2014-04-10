@@ -19,6 +19,9 @@
     <%= "<li>Location</li>: #{@lead.location}".html_safe if @lead.location.present? %>
   </ul>
 
+<br>
+<p style="color:red">^ ADD REFERRAL FEE %, LOCATION/COMMENTS ^</p>
+
   </br>
   <%= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
   <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
