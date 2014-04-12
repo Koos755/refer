@@ -5,12 +5,6 @@ class Token < ActiveRecord::Base
 
   validates :token_type, presence: true, inclusion: { in: %w(lead_agent lead_broker password_reset), message: "%{value} is not a valid token_type" }
 
-  def create_lead_broker_token(lead)
-    self.create_token
-    self.token_type = 'lead_broker'
-    self.save
-  end
-
   def create_lead_agent_token(lead)
     self.create_token
     self.token_type = 'lead_agent'
