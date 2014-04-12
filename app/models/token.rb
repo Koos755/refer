@@ -17,6 +17,7 @@ class Token < ActiveRecord::Base
     self.user_id = lead.receiving_agent.user.id
     self.lead_id = lead.id
     self.save
+    WizardMail.send_lead_receiving_agent(lead, self).deliver
   end
 
   def create_lead_broker_token(lead, user)

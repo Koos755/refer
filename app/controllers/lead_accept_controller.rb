@@ -43,7 +43,6 @@ class LeadAcceptController < ApplicationController
     end
     @token = Token.new
     @token.create_lead_broker_token(@lead, @user)
-    # WizardMail.send_lead_broker(@lead, @token).deliver
     render 'success_agent'
   end
 
