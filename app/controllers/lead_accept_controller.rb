@@ -34,7 +34,7 @@ class LeadAcceptController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user.present?
       unless @user.broker.present?
-        @user.create_with_broker
+        @user.create_with_broker(params[:brokerage_name], @lead)
       end
     else
       @user = User.new(step3_params)
@@ -43,7 +43,7 @@ class LeadAcceptController < ApplicationController
     end
     @token = Token.new
     @token.create_lead_broker_token(@lead, @user)
-    WizardMail.send_lead_broker(@lead, @token).deliver
+    # WizardMail.send_lead_broker(@lead, @token).deliver
     render 'success_agent'
   end
 
