@@ -8,5 +8,6 @@ class Lead < ActiveRecord::Base
   delegate :name, to: :user
   delegate :mobile, to: :user
   delegate :email, to: :user
+  has_one :broker, through: :receiving_agent
 
 end

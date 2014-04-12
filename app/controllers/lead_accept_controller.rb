@@ -63,7 +63,8 @@ class LeadAcceptController < ApplicationController
   end
 
   def broker_step2
-
+    @brokarage = Brokarage.new
+    @broker = @lead.broker
   end
 
   def broker_step3
