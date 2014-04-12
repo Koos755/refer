@@ -12,7 +12,7 @@ Refer::Application.routes.draw do
   post "wizard/step4/create" => 'wizard#step4_create', as: 'step4_create'
   get "wizard/step5", as: 'step5'
 
-  get 'about/index' => 'about#index'
+  get 'about/index' => 'about#index', as: 'about_index'
 
   get "sessions/new" => 'sessions#new'
   post "sessions/" => 'sessions#create', as: 'sessions'

@@ -1,6 +1,5 @@
-<form role="form">
 
-  <%= form_tag(sessions_url, method: :post) do %>
+  <%= form_tag(sessions_url, method: :post, role: "form") do %>
 
     <div class="form-group">
       <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
@@ -16,4 +15,4 @@
 
   <% end %>
 
-</form>
+
