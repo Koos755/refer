@@ -1,7 +1,7 @@
 class LeadAcceptController < ApplicationController
 
   before_action :set_lead
-  before_action :only_agent, only: [:agent, :agent_reply]
+  before_action :only_agent, only: [:agent, :agent_reply, :agent_step2, :agent_step3]
   before_action :only_broker, only: [:broker, :broker_reply]
 
   def agent
