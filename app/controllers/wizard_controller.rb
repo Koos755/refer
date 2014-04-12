@@ -1,6 +1,7 @@
 class WizardController < ApplicationController
 
   before_action :set_lead, only: [:step3, :step3_create, :step4, :step4_create, :step5]
+  before_action :sending_agent_only, only: [:step3, :step3_create, :step4, :step4_create, :step5]
 
   def step1
     @user = User.new
@@ -92,5 +93,12 @@ class WizardController < ApplicationController
 
   def set_lead
     @lead = Lead.find_by(id: params[:lead_id])
+  end
+
+  def sending_agent_only
+    unless current_user == @lead.sending_agent.user
+      flash[:error] = "You're not allowed to view this page!"
+      redirect_to about_index_url
+    end
   end
 end

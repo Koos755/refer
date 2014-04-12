@@ -1,19 +1,15 @@
-<form role="form">
+<%= form_tag(sessions_url, method: :post, role: "form") do %>
 
-  <%= form_tag(sessions_url, method: :post) do %>
+  <div class="form-group">
+    <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
+  </div>
 
-    <div class="form-group">
-      <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
-    </div>
+  <div class="form-group">
+    <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
+  </div>
 
-    <div class="form-group">
-      <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
-    </div>
+  <div class="form-group">
+    <%= button_tag 'Sign In', class: "btn btn-primary" %>
+  </div>
 
-    <div class="form-group">
-      <%= button_tag 'Sign In', class: "btn btn-primary" %>
-    </div>
-
-  <% end %>
-
-</form>
+<% end %>

@@ -16,7 +16,7 @@
     <%= "<li>Buying</li>".html_safe if @lead.buying %>
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
-    <%= "<li>Location</li>: #{@lead.location}".html_safe if @lead.location.present? %>
+    <%= "<li>Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
   </ul>
 
 <br>
