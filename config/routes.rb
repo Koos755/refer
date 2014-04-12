@@ -30,6 +30,8 @@ Refer::Application.routes.draw do
   get "lead_accept/agent/step2" => 'lead_accept#agent_step2', as: 'agent_step2'
   post "lead_accept/agent/step3" => 'lead_accept#agent_step3', as: 'agent_step3'
   get "lead_accept/broker/step1" => 'lead_accept#broker', as: 'broker_step1'
+  get "lead_accept/broker/step2" => 'lead_accept#broker_step2', as: 'broker_step2'
+  get "lead_accept/broker/step3" => 'lead_accept#broker_step3', as: 'broker_step3'
   post "lead_accept/agent_reply", as: 'agent_reply'
   post "lead_accept/broker_reply", as: 'broker_reply'
 

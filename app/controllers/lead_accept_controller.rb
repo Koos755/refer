@@ -52,7 +52,7 @@ class LeadAcceptController < ApplicationController
       @lead.accepted_by_broker = true
       if @lead.save
         WizardMail.lead_accepted(@lead).deliver
-        render 'success_broker'
+        redirect_to broker_step3_url({lead_id: @lead.id})
       end
     elsif params[:accept] =='no'
       @lead.accepted_by_agent = false
@@ -60,6 +60,14 @@ class LeadAcceptController < ApplicationController
         #TODO add decline path
       end
     end
+  end
+
+  def broker_step2
+
+  end
+
+  def broker_step3
+    render 'success_broker'
   end
 
   private
