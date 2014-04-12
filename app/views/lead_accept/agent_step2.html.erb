@@ -6,7 +6,7 @@
     <p>If you are your own broker, fill in your information.</p>
     <%= render 'users/form', user: @user, destination_url: @url, button: "Request Broker's approval" %>
     <script type="text/javascript">
-      $('.button').before('<%= j(render 'layouts/brokerage_name') %>');
+      $('#button').before('<%= j(render 'layouts/brokerage_name') %>');
       $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
     </script>
   </div>
