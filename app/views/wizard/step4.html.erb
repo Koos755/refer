@@ -40,7 +40,7 @@
 
     <h3>Referral Summary:</h3>
       <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %>.</p>
-      <p>Read full <a href="#">Terms and Conditions</a>.</p>
+      <p>Read full <%= link_to "Terms and Conditions", about_terms_conditions_url %>.</p>
       <%= form_tag(step4_create_url, method: :post) do %>
         <%= check_box_tag :accepted_terms, true, false %>
         <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>

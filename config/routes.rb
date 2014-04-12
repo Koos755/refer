@@ -13,6 +13,7 @@ Refer::Application.routes.draw do
   get "wizard/step5", as: 'step5'
 
   get 'about/index' => 'about#index'
+  get 'about/terms_conditions' => 'about#terms_conditions'
 
   get "sessions/new" => 'sessions#new'
   post "sessions/" => 'sessions#create', as: 'sessions'

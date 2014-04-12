@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Style Bootstrap forms
 gem 'bootstrap_form'
 
+# Stop assets messages in server log: https://github.com/evrone/quiet_assets
+gem 'quiet_assets', :group => :development
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
