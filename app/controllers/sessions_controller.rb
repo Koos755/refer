@@ -24,4 +24,11 @@ class SessionsController < ApplicationController
     flash[:notice] = "Successfully signed out"
     redirect_to root_url
   end
+
+  def reset
+  end
+
+  def set_password
+    @user = current_user
+  end
 end

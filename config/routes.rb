@@ -15,9 +15,15 @@ Refer::Application.routes.draw do
   get 'about/index' => 'about#index'
   get 'about/terms_conditions' => 'about#terms_conditions'
 
-  get "sessions/new" => 'sessions#new'
+  get "sessions/new" => 'sessions#new', as: 'new_session'
   post "sessions/" => 'sessions#create', as: 'sessions'
   delete "sessions/" => 'sessions#destroy'
+  get 'sessions/set_password' => 'sessions#set_password', as: 'set_password'
+
+  get 'sessions/reset' => 'sessions#reset', as: 'reset'
+  post 'sessions/reset' => 'sessions#submit_reset'
+  delete 'sessions/reset' => 'sessions#new_password'
+
   get "users/new"
   get "users/show"
   get "users/edit"
@@ -38,10 +44,6 @@ Refer::Application.routes.draw do
   post "lead_accept/broker/step3" => 'broker_accept#broker_step3', as: 'broker_step3'
   get "lead_accept/broker/step4" => 'broker_accept#broker_step4', as: 'broker_step4'
 
-  get 'sessions/reset' => 'sessions#request_reset', as: 'reset'
-  post 'sessions/reset' => 'sessions#submit_reset'
-  delete 'sessions/reset' => 'sessions#new_password'
-  get 'sessions/set_password' => 'sessions#set_password', as: 'set_password'
 
   resources :leads
   # The priority is based upon order of creation: first created -> highest priority.
