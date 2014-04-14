@@ -2,6 +2,7 @@
   <%= check_box_tag :accepted_terms, true, false, required: true %>
   <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
   <%= render 'layouts/hidden', lead_id: lead_id %>
+  <br>
   <%= button_tag button, class: "btn btn-primary" %>
   <%= link_to 'Decline', decline_url, method: :post, class: "btn btn-default" if decline == true%>
 <% end %>
