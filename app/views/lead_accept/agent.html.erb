@@ -5,8 +5,6 @@
   </br>
   <p>You have a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
-  <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %> of the commission.</p>
-
   <p>Once you and your broker accept, you will receive contact details.</p>
 
   <ul>
@@ -15,14 +13,13 @@
     <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if @lead.user.mobile.present? %>
     <%= "<li>Buying</li>".html_safe if @lead.buying %>
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
-    <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
+    <%= "<li>Price Range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}</li>".html_safe if @lead.price_range_start.present? && @lead.price_range_end.present? %>
     <%= "<li>Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
+    <%= "<li>Comment: #{@lead.comment}</li>".html_safe if @lead.comment.present? %>
   </ul>
 
-<br>
-<p style="color:red">^ LOCATION/COMMENTS ^</p>
+<p style="color:red">I, the receiving agent agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %></p>
 
-  </br>
   <%= render 'layouts/terms', lead_id: @lead.id, url: agent_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: agent_reply_url({lead_id: @lead.id, accept: 'no'}) %>
   <%#= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
 

@@ -40,8 +40,8 @@ class Wizard
     end
     lead.selling = self.selling
     lead.buying = self.buying
-    lead.price_range_start = self.price_range_start
-    lead.price_range_end = self.price_range_end
+    lead.price_range_start = self.price_range_start.gsub(/\D/, '')
+    lead.price_range_end = self.price_range_end.gsub(/\D/, '')
     lead.location = self.location
     lead.comment = self.comment
     lead.save

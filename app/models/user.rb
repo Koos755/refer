@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
 
+  before_save :clean_mobile
+
   def create_password
     password = SecureRandom.urlsafe_base64(8)
     self.password = password
@@ -33,5 +35,11 @@ class User < ActiveRecord::Base
     agent = lead.receiving_agent
     agent.brokerage_id = brokerage.id
     agent.save
+  end
+
+  def clean_mobile
+    if self.mobile.present?
+      self.mobile = self.mobile.gsub(/\D/, '')
+    end
   end
 end
