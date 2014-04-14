@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if  user.present?
-      flash[:notice] = "Successfully signed in!"
+      flash[:notice] = "Signed in sucessfully."
       session[:user_id] = user.id
       if request.referrer.split('/').last == 'step1'
         redirect_to step2_url
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    flash[:notice] = "Successfully signed out"
+    flash[:notice] = "Signed out successfully."
     redirect_to root_url
   end
 
@@ -38,10 +38,10 @@ class SessionsController < ApplicationController
     @user.password_confirmation = params[:password_confirmation]
     @user.auto_password = false
     if @user.save
-      flash[:notice] = "Password updated"
+      flash[:notice] = "Password updated."
       redirect_to root_url
     else
-      flash[:error] = "Something went wrong please try again..."
+      flash[:error] = "Something went wrong, please try again."
       render 'set_password'
     end
   end
