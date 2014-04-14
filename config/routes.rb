@@ -22,7 +22,6 @@ Refer::Application.routes.draw do
 
   get 'sessions/reset' => 'sessions#reset', as: 'reset'
   post 'sessions/reset' => 'sessions#submit_reset'
-  delete 'sessions/reset' => 'sessions#new_password'
 
   get "users/new"
   get "users/show"

@@ -46,6 +46,4 @@ class SessionsController < ApplicationController
     end
   end
 
-  private
-
 end
