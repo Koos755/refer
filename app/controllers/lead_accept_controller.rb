@@ -20,6 +20,7 @@ class LeadAcceptController < ApplicationController
       end
     elsif params[:accept] =='no'
       @lead.accepted_by_agent = false
+      @lead.accepted_by_agent_time = Time.now
       if @lead.save
         #TODO add decline path
       end

@@ -14,8 +14,8 @@
 
     <%= render 'layouts/errors', object: @wizard %>
       <%= bootstrap_form_for(@wizard, url: step2_create_url) do |f|%>
-        <%= f.text_field :name, placeholder: "First & Last Name(s)", hide_label: true %>
-        <%= f.email_field :email, placeholder: "Email", hide_label: true %>
+        <%= f.text_field :name, placeholder: "First & Last Name(s)", hide_label: true, required: true %>
+        <%= f.email_field :email, placeholder: "Email", hide_label: true, required: true %>
         <%= f.text_field :mobile, placeholder: "Mobile Phone (Example: 123-456-7890)", hide_label: true %>
         <%= f.check_box :selling %>
 
