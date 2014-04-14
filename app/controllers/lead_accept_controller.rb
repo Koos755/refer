@@ -5,6 +5,10 @@ class LeadAcceptController < ApplicationController
 
 
   def agent
+    if @lead.accepted_by_agent
+      flash[:notice] = "This lead as already been accepted, login and view under my referrals"
+      redirect_to agent_step4_url({lead_id: @lead.id})
+    end
   end
 
   def agent_reply
