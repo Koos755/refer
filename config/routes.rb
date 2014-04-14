@@ -27,13 +27,16 @@ Refer::Application.routes.draw do
   get "token/:value" => 'token#value', as: 'token'
 
   get "lead_accept/agent/step1" => 'lead_accept#agent', as: 'agent_step1'
+  post "lead_accept/agent_reply", as: 'agent_reply'
   get "lead_accept/agent/step2" => 'lead_accept#agent_step2', as: 'agent_step2'
   post "lead_accept/agent/step3" => 'lead_accept#agent_step3', as: 'agent_step3'
+  get "lead_accept/agent/step4" => 'lead_accept#agent_step4', as: 'agent_step4'
+
   get "lead_accept/broker/step1" => 'broker_accept#broker', as: 'broker_step1'
-  get "lead_accept/broker/step2" => 'broker_accept#broker_step2', as: 'broker_step2'
-  get "lead_accept/broker/step3" => 'broker_accept#broker_step3', as: 'broker_step3'
-  post "lead_accept/agent_reply", as: 'agent_reply'
   post "broker_accept/broker_reply", as: 'broker_reply'
+  get "lead_accept/broker/step2" => 'broker_accept#broker_step2', as: 'broker_step2'
+  post "lead_accept/broker/step3" => 'broker_accept#broker_step3', as: 'broker_step3'
+  get "lead_accept/broker/step4" => 'broker_accept#broker_step4', as: 'broker_step4'
 
   get 'sessions/reset' => 'sessions#request_reset', as: 'reset'
   post 'sessions/reset' => 'sessions#submit_reset'

@@ -40,10 +40,12 @@ class LeadAcceptController < ApplicationController
     end
     @token = Token.new
     @token.create_lead_broker_token(@lead, @user)
-    render 'success_agent'
+    redirect_to agent_step4
   end
 
-
+  def agent_step4
+    render 'success_agent'
+  end
 
   private
 

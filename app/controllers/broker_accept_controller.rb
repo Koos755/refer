@@ -12,7 +12,7 @@ class BrokerAcceptController < ApplicationController
       @lead.accepted_by_broker = true
       if @lead.save
         WizardMail.lead_accepted(@lead).deliver
-        redirect_to broker_step3_url({lead_id: @lead.id})
+        redirect_to broker_step2_url({lead_id: @lead.id})
       end
     elsif params[:accept] =='no'
       @lead.accepted_by_agent = false
@@ -23,7 +23,7 @@ class BrokerAcceptController < ApplicationController
   end
 
   def broker_step2
-    @brokarage = @lead.broker
+    @brokerage = @lead.brokerage
     @broker = @lead.broker
   end
 
