@@ -33,7 +33,10 @@ class LeadAcceptController < ApplicationController
   end
 
   def agent_step3
-    @user = User.find_by(email: params[:user][:email])
+    @user = User.find_by(email: params[:email])
+    receiving_agent = current_user
+    receiving_agent.name = params[:receiving_agent_name]
+    receiving_agent.save
     if @user.present?
       unless @user.broker.present?
         @user.create_with_broker(params[:brokerage_name], @lead)
@@ -45,7 +48,7 @@ class LeadAcceptController < ApplicationController
     end
     @token = Token.new
     @token.create_lead_broker_token(@lead, @user)
-    redirect_to agent_step4
+    redirect_to agent_step4_url({lead_id: @lead.id})
   end
 
   def agent_step4
@@ -66,6 +69,6 @@ class LeadAcceptController < ApplicationController
     end
 
     def step3_params
-      params.require(:user).permit(:name,:email)
+      params.permit(:name,:email)
     end
 end

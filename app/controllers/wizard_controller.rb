@@ -53,7 +53,7 @@ class WizardController < ApplicationController
       @user.create_with_agent
     end
     @lead.receiving_agent_id = @user.agent.id
-    @lead.referral_percent = params[:referral_percent]
+    @lead.referral_percent = params[:referral_percent].gsub(/\D/, '')
     @lead.save
     redirect_to step4_url({lead_id: @lead.id})
   end
