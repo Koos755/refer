@@ -31,4 +31,21 @@ class SessionsController < ApplicationController
   def set_password
     @user = current_user
   end
+
+  def submit_reset
+    @user = current_user
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+    @user.auto_password = false
+    if @user.save
+      flash[:notice] = "Password updated"
+      redirect_to root_url
+    else
+      flash[:error] = "Something went wrong please try again..."
+      render 'set_password'
+    end
+  end
+
+  private
+
 end
