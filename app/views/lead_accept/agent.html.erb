@@ -23,8 +23,9 @@
 <p style="color:red">^ LOCATION/COMMENTS ^</p>
 
   </br>
-  <%= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
-  <%= link_to 'Decline', agent_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
+  <%= render 'layouts/terms', lead_id: @lead.id, url: agent_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: agent_reply_url({lead_id: @lead.id, accept: 'no'}) %>
+  <%#= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
+
 
   </div>
 
@@ -37,4 +38,4 @@
   </div>
 </div>
 
-</div><!-- end row -->
+</div>

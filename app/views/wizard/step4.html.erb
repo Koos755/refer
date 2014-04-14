@@ -41,12 +41,7 @@
     <h3>Referral Summary:</h3>
       <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %>.</p>
       <p>Read full <%= link_to "Terms and Conditions", about_terms_conditions_url %>.</p>
-      <%= form_tag(step4_create_url, method: :post) do %>
-        <%= check_box_tag :accepted_terms, true, false, required: true %>
-        <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
-        <%= render 'layouts/hidden', lead_id: @lead.id %>
-        <%= button_tag 'Send Referral', class: "btn btn-primary" %>
-      <% end %>
+        <%= render 'layouts/terms', lead_id: @lead.id, url: step4_create_url, button: 'Send Referral', decline: false %>
       <br>
 
       <p style="color:red">^ ADD VALIDATION ^</p>
