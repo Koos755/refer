@@ -1,8 +1,9 @@
-<%= bootstrap_form_for(user, url: destination_url) do |f| %>
+<h1>Howdy</h1>
+
+<%= bootstrap_form_for(@brokerage, url: destination_url) do |f| %>
   <%= f.text_field :name, placeholder: 'First & Last Name', hide_label: true  %>
   <%= f.email_field :email, placeholder: 'Email', hide_label: true  %>
   <%= f.password_field :password, placeholder: 'Password', hide_label: true  %>
   <%= f.submit button, :class => 'btn btn-primary', id: 'button' %>
 <% end %>
-
-
+<!-- Add Brokerage detail... -->
