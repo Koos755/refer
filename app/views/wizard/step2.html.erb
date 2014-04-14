@@ -11,20 +11,21 @@
 <div class="row">
   <div class="col-md-6">
     <h3>Your Referral Client's Details</h3>
-
+    <p>This helps the Receiving Agent know more about the client you're referring.</p>
     <%= render 'layouts/errors', object: @wizard %>
       <%= bootstrap_form_for(@wizard, url: step2_create_url) do |f|%>
-        <%= f.text_field :name, placeholder: "First & Last Name(s)", hide_label: true, required: true %>
-        <%= f.email_field :email, placeholder: "Email", hide_label: true, required: true %>
+        <%= f.text_field :name, placeholder: "First & Last Name(s)*", hide_label: true, required: true %>
+        <%= f.email_field :email, placeholder: "Email*", hide_label: true, required: true %>
         <%= f.text_field :mobile, placeholder: "Mobile Phone (Example: 123-456-7890)", hide_label: true %>
-        <%= f.check_box :selling %>
 
+        <p>They are:</p>
+        <%= f.check_box :selling %>
         <%= f.check_box :buying %>
 
         <%= f.text_field :price_range_start, placeholder: "Buying minimum price (Example: $250,000)", hide_label: true %>
         <%= f.text_field :price_range_end, placeholder: "Buying maximum price (Example: $400,000)", hide_label: true %>
-        <%= f.text_field :location, placeholder: "City, State", hide_label: true %>
-        <%= f.text_area :comment, placeholder: "Any additional information you would like to share with receiving agent", hide_label: true %>
+        <%= f.text_field :location, placeholder: "Where do they want to buy? (City, State)", hide_label: true %>
+        <%= f.text_area :comment, placeholder: "Any additional information for the Receiving Agent", hide_label: true %>
         <%= f.button 'Next Step', class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -36,13 +37,8 @@
       <div class="well">
         <h4>Getting Started</h4>
         <p>It takes just 3 simple steps to send your referral to the Receiving Agent.</p>
-        <p>This page helps the receiving agent know more about the client you're referring.</p>
-        <p>Your client's personal information will not be shared with the receiving agent/broker until they have signed the referral agreement.</p>
-        <p>You can review the full, legal referral agreement prior to sending to the Receiving Agent.</p>
+        <p>Your client's contact information (email, phone number) will not be shared with the Receiving Broker/Agent until they have signed the referral agreement.</p>
+        <p>You will have a chance to review the agreement prior to sending it.</p>
       </div>
     </div>
 </div><!-- end row 2 -->
-
-<br>
-<p style="color:red">^ ADD REFERRAL FEE FIELD AND LOCATION/COMMENTS TEXT BOX ^</p>
-
