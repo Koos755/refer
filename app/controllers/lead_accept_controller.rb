@@ -1,13 +1,10 @@
 class LeadAcceptController < ApplicationController
 
   before_action :set_lead
-  before_action :only_agent, only: [:agent, :agent_reply, :agent_step2, :agent_step3]
-  before_action :only_broker, only: [:broker, :broker_reply]
+  before_action :only_agent
+
 
   def agent
-  end
-
-  def broker
   end
 
   def agent_reply
@@ -46,31 +43,7 @@ class LeadAcceptController < ApplicationController
     render 'success_agent'
   end
 
-  def broker_reply
-    if params[:accept] =='yes'
-      @lead.accepted_by_broker_time = Time.now
-      @lead.accepted_by_broker = true
-      if @lead.save
-        WizardMail.lead_accepted(@lead).deliver
-        redirect_to broker_step3_url({lead_id: @lead.id})
-      end
-    elsif params[:accept] =='no'
-      @lead.accepted_by_agent = false
-      if @lead.save
-        #TODO add decline path
-      end
-    end
-  end
 
-  def broker_step2
-    @brokarage = @lead.broker
-    @broker = @lead.broker
-  end
-
-
-  def broker_step3
-    render 'success_broker'
-  end
 
   private
 
@@ -80,13 +53,6 @@ class LeadAcceptController < ApplicationController
 
     def only_agent
       unless current_user.present? && current_user == @lead.receiving_agent.user
-        flash[:error] = "You are not allowed to access that page!"
-        redirect_to root_url
-      end
-    end
-
-    def only_broker
-      unless current_user.present? && current_user == @lead.receiving_agent.broker.user
         flash[:error] = "You are not allowed to access that page!"
         redirect_to root_url
       end
