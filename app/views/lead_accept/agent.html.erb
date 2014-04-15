@@ -1,11 +1,21 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <p>
+      <button type="button" class="btn btn-primary btn-sm">1) Accept Referral</button>
+      <button type="button" class="btn btn-default btn-sm">2) Your Info</button>
+      <button type="button" class="btn btn-default btn-sm">3) Next Steps</button>
+    </p>
+  </div>
+</div><!-- end row 1 -->
+
 <h1>Accept Referral?</h1>
 
 <div class="row">
   <div class="col-md-6">
   </br>
-  <p>You have a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
+  <p>This referral offer is from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
-  <p>Once you and your broker accept, you will receive contact details.</p>
+  <p>Once you (and your managing broker) accept, you will receive contact details.</p>
 
   <ul>
     <li>Client Name: <%= @lead.user.name %></li>
@@ -15,10 +25,10 @@
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
     <%= "<li>Price Range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}</li>".html_safe if @lead.price_range_start.present? && @lead.price_range_end.present? %>
     <%= "<li>Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
-    <%= "<li>Comment: #{@lead.comment}</li>".html_safe if @lead.comment.present? %>
+    <%= "<li>Additional info: #{@lead.comment}</li>".html_safe if @lead.comment.present? %>
   </ul>
 
-<p style="color:red">I, the receiving agent agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %></p>
+<p style="color:green">I, the Receiving Agent, agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
 
   <%= render 'layouts/terms', lead_id: @lead.id, url: agent_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: agent_reply_url({lead_id: @lead.id, accept: 'no'}) %>
   <%#= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
