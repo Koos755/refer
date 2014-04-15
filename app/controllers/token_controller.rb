@@ -7,7 +7,7 @@ class TokenController < ApplicationController
       token.save
       if token.token_type == 'lead_agent'
         if token.lead.accepted_by_agent
-          flash[:notice] = "This lead as already been accepted, login and view under my referrals"
+          flash[:notice] = "This referral has already been accepted. Please sign in and view under My Referrals."
           redirect_to root_url
         else
           session[:user_id] = token.user_id
@@ -15,7 +15,7 @@ class TokenController < ApplicationController
         end
       elsif token.token_type == 'lead_broker'
         if token.lead.accepted_by_broker
-          flash[:notice] = "This lead as already been accepted, login and view under my referrals"
+          flash[:notice] = "This referral has already been accepted. Please sign in and view under My Referrals."
           redirect_to root_url
         else
           session[:user_id] = token.user_id

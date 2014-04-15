@@ -1,5 +1,5 @@
 <h3>Almost done!</h3>
-
+<br>
 <div class="row">
   <div class="col-md-6">
 
@@ -8,8 +8,9 @@
         <%= label_tag :receiving_agent_name, 'Is your name correct?' %>
         <%= text_field_tag :receiving_agent_name, current_user.name, placeholder: "Your Name", class: "form-control", required: true %>
       </div>
-      <h5>Lastly, we need your managing broker's details.</h5>
-      <p>If you are your own broker, fill in your information.</p>
+      <br>
+      <p><strong>Lastly, enter your managing broker's details.</strong></p>
+      <p>If you are your own broker, fill in your personal information.</p>
 
       <div class="form-group">
         <%= text_field_tag :name, nil, placeholder: "Broker's First & Last Name", class: "form-control", required: true %>

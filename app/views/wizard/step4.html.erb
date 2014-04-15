@@ -21,8 +21,9 @@
     <%= "<li>Mobile Phone: #{number_to_phone(@lead.mobile)}</li>".html_safe if @lead.user.mobile.present? %>
     <%= "<li>Buying</li>".html_safe if @lead.buying %>
     <%= "<li>Selling</li>".html_safe if @lead.selling %>
-    <%= "<li>Price Range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}</li>".html_safe if @lead.price_range_start.present? && @lead.price_range_end.present? %>
-    <%= "<li>Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
+    <%= "<li>Buying</li>".html_safe if @lead.buying %>
+    <%= "<li>Buying Price Range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}</li>".html_safe if @lead.price_range_start.present? && @lead.price_range_end.present? %>
+    <%= "<li>Buying Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
     <%= "<li>Comment: #{@lead.comment}</li>".html_safe if @lead.comment.present? %>
   </ul>
   <small>(*Will not be shared with receiving agent until referral is accepted)</small>
@@ -32,8 +33,6 @@
     <li>Name: <%= @lead.receiving_agent.name %></li>
     <li>Email: <%= @lead.receiving_agent.email %></li>
   </ul>
-    <br>
-    <p style="color:red">^ ADD LOCATION/COMMENTS ^</p>
 </div>
 
 <div class="col-md-4">
@@ -45,8 +44,6 @@
       <p>Read full <%= link_to "Terms and Conditions", about_terms_conditions_url %>.</p>
         <%= render 'layouts/terms', lead_id: @lead.id, url: step4_create_url, button: 'Send Referral', decline: false %>
       <br>
-
-      <p style="color:red">^ ADD VALIDATION ^</p>
     </div>
 
   </div>
