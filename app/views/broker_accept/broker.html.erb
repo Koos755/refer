@@ -1,16 +1,26 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <p>
+      <button type="button" class="btn btn-primary btn-sm">1) Accept Referral</button>
+      <button type="button" class="btn btn-default btn-sm">2) Your Info</button>
+      <button type="button" class="btn btn-default btn-sm">3) Next Steps</button>
+    </p>
+  </div>
+</div><!-- end row 1 -->
+
 <h1>Approve Referral?</h1>
 
 <div class="row">
   <div class="col-md-6">
     </br>
-    <p>Your agent <strong><%= @lead.receiving_agent.name %></strong> has accepted a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
+    <p class="lead">Your agent <strong><%= @lead.receiving_agent.name %></strong> has accepted a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
-    <p>Once you approve this referral (as the managing broker), <strong><%= @lead.receiving_agent.name %></strong> will receive the client's contact details.</p>
+    <p>Once you approve this referral (as the managing broker), your agent will receive the client's contact details.</p>
 
     <%= render 'layouts/lead_details', lead: @lead %>
 
 
-    <p style="color:green">I, the Receiving Broker, accept this lead and agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
+    <p style="color:green">I, the Receiving Broker, accept this referral and agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
 
     <%= render 'layouts/terms', lead_id: @lead.id, url: broker_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: broker_reply_url({lead_id: @lead.id, accept: 'no'}) %>
   </div>
@@ -25,3 +35,5 @@
 </div>
 
 </div><!-- end row -->
+
+<%= render 'layouts/remove_password_alert' %>
