@@ -1,0 +1,10 @@
+<ul>
+    <li>Client Name: <%= lead.user.name %></li>
+    <li>Email: (Available once lead is accepted)</li>
+    <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if lead.user.mobile.present? %>
+    <%= "<li>Buying</li>".html_safe if lead.buying %>
+    <%= "<li>Selling</li>".html_safe if lead.selling %>
+    <%= "<li>Price Range: #{number_to_currency(lead.price_range_start, precision: 0)} to #{number_to_currency(lead.price_range_end, precision: 0)}</li>".html_safe if lead.price_range_start.present? && lead.price_range_end.present? %>
+    <%= "<li>Location: #{lead.location}</li>".html_safe if lead.location.present? %>
+    <%= "<li>Additional info: #{lead.comment}</li>".html_safe if lead.comment.present? %>
+</ul>

@@ -9,26 +9,18 @@
 
   <p>Once you approve this referral (as the managing broker), <strong><%= @lead.receiving_agent.name %></strong> will receive the client's contact details.</p>
 
-  <ul>
-    <li>Client Name: <%= @lead.user.name %></li>
-    <li>Email: (Available once lead is accepted)</li>
-    <%= "<li>Mobile Phone: (Available once lead is accepted)</li>".html_safe if @lead.user.mobile.present? %>
-    <%= "<li>Buying</li>".html_safe if @lead.buying %>
-    <%= "<li>Selling</li>".html_safe if @lead.selling %>
-    <li>Price Range: <%= "#{@lead.price_range_start} to #{@lead.price_range_end}" %></li>
-    <%= "<li>Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
-  </ul>
+  <%= render 'layouts/lead_details', lead: @lead %>
 
-<br>
-<p style="color:red">^ ADD REFERRAL FEE, LOCATION/COMMENTS ^</p>
-<p style="color:red">^ HIDE PRICE RANGE IF ONLY SELLING ^</p>
-<p style="color:red">^ MAKE ENTIRE (LONG-FORM) AGREEMENT ACCESSIBLE HERE SOMEHOW ^</p>
-<p style="color:red">^ BROKER MAY WANT MORE INFORMATION ABOUT THE SENDING AGENT/BROKERAGE AT THIS POINT TO VET THE LEAD ^</p>
 
-  </br>
-  <%= link_to 'Approve Referral', broker_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
-  <%= link_to 'Decline', broker_reply_url({lead_id: @lead.id, accept: 'no'}), method: :post, class: "btn btn-default" %>
+  <p style="color:green">I, the Receiving Broker, agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
 
+  <%= render 'layouts/terms', lead_id: @lead.id, url: broker_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: broker_reply_url({lead_id: @lead.id, accept: 'no'}) %>
+
+  <br>
+  <p style="color:red">^ ADD REFERRAL FEE, LOCATION/COMMENTS ^</p>
+  <p style="color:red">^ HIDE PRICE RANGE IF ONLY SELLING ^</p>
+  <p style="color:red">^ MAKE ENTIRE (LONG-FORM) AGREEMENT ACCESSIBLE HERE SOMEHOW ^</p>
+  <p style="color:red">^ BROKER MAY WANT MORE INFORMATION ABOUT THE SENDING AGENT/BROKERAGE AT THIS POINT TO VET THE LEAD ^</p>
   </div>
 
 <div class="col-md-6">
