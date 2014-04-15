@@ -1,6 +1,5 @@
 class WizardMail < ActionMailer::Base
-  default from: "no-reply@surerefer.com",
-          name: "SureRefer"
+  default from: '"SureRefer" <no-reply@surerefer.com>'
 
   def send_signup_email(user)
     @user = user
