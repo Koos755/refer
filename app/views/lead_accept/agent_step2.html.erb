@@ -6,19 +6,19 @@
     <%= form_tag(@url, method: :post, role: "form") do %>
       <div class="form-group">
         <%= label_tag :receiving_agent_name, 'Is your name correct?' %>
-        <%= text_field_tag :receiving_agent_name, current_user.name, placeholder: "Your Name", class: "form-control" %>
+        <%= text_field_tag :receiving_agent_name, current_user.name, placeholder: "Your Name", class: "form-control", required: true %>
       </div>
       <h5>Lastly, we need your managing broker's details.</h5>
       <p>If you are your own broker, fill in your information.</p>
 
       <div class="form-group">
-        <%= text_field_tag :name, nil, placeholder: "Broker's First & Last Name", class: "form-control" %>
+        <%= text_field_tag :name, nil, placeholder: "Broker's First & Last Name", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= email_field_tag :email, nil, placeholder: "Broker's Email", class: "form-control" %>
+        <%= email_field_tag :email, nil, placeholder: "Broker's Email", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= text_field_tag :brokerage_name, nil, placeholder: "Brokerage Name", class: "form-control" %>
+        <%= text_field_tag :brokerage_name, nil, placeholder: "Brokerage Name", class: "form-control", required: true %>
       </div>
 
       <div class="form-group">
