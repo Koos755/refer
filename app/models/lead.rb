@@ -11,4 +11,10 @@ class Lead < ActiveRecord::Base
   has_one :broker, through: :receiving_agent
   has_one :brokerage, through: :broker
 
+
+  def name=(name)
+    user = self.user
+    user.name = name
+    user.save
+  end
 end
