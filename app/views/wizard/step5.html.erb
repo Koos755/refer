@@ -16,10 +16,10 @@
   <h3>Referral Sent</h3>
   <div><p>Your referral has been sent to <%= @lead.receiving_agent.user.name %>.</p>
     <p>Look for an email update soon. If you don't get one within a few business days, follow up with <%= @lead.receiving_agent.user.name %> to make sure they received the referral.</p>
-    <p>You can always see the current status on My Referrals.</p>
 
-    <%= link_to "Track your referrals", leads_url, class: "btn btn-primary" %>
-
+    <%= link_to "My Referrals", leads_url, class: "btn btn-primary" %>
+<br>
+<br>
       <p class="small"><em>To make sure messages from SureRefer don't get marked as Spam or Junk in your email, add <strong>noreply@surerefer.com</strong> to your <a href="http://www.benchmarkemail.com/help-FAQ/answer/what-is-whitelisting-how-do-i-add-email-addresses-to-my-safe-senders-list-in-my-email-client-or-my-security-software">whitelist/approved senders</a>.</em></p>
   </div>
 </div>

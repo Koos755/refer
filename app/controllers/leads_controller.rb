@@ -27,7 +27,7 @@ class LeadsController < ApplicationController
   end
 
   def only_agents_and_broker_can_view_lead
-    unless [@lead.sending_agent.user, @lead.receiving_agent.user, @lead.broker.user].include?(current_user)
+    unless [@lead.sending_agent.try(:user), @lead.receiving_agent.try(:user), @lead.broker.try(:user)].include?(current_user)
       flash[:error] = "You are not allowed to view this page!"
       redirect_to root_url
     end
