@@ -1,17 +1,79 @@
-<h1>Leads#index</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-<h5>Leads sent:</h5>
+  <h2>My Referrals</h2>
+  <hr>
 
-<ul>
-  <% @leads_sent.each do |lead|  %>
-    <li><%= lead.name %></li>
-  <% end %>
-</ul>
+  <h3>Sent (<%= @leads_sent.count %>)</h3>
 
-<h5>Leads Received:</h5>
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Client Name</th>
+      <th>Status</th>
+      <th>Sent (Date)</th>
+      <th>Last Updated</th>
+      <th>Agent Name</th>
+    </tr>
+    <% @leads_sent.each do |lead|  %>
+      <tr>
+        <td><a href="#"><%= lead.name %></a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+      <% end %>
+      </td>
+    </tr>
+  </table>
 
-<ul>
-  <% @leads_received.each do |lead|  %>
-    <li><%= lead.name %></li>
-  <% end %>
-</ul>
+  <hr>
+
+  <h3>Received (<%= @leads_received.count %>)</h3>
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Client Name</th>
+      <th>Status</th>
+      <th>Sent (Date)</th>
+      <th>Last Updated</th>
+      <th>Agent Name</th>
+    </tr>
+    <% @leads_received.each do |lead|  %>
+      <tr>
+        <td><%= lead.name %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+      <% end %>
+      </td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h3>Completed (0)</h3>
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Client Name</th>
+      <th>Status</th>
+      <th>Sent (Date)</th>
+      <th>Last Updated</th>
+      <th>Agent Name</th>
+    </tr>
+    <%# @leads_sent.each do |lead|  %>
+      <tr>
+        <td><a href="#"><%#= lead.name %></a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+      <%# end %>
+      </td>
+    </tr>
+  </table>
+
+<hr>
+  </div>
+</div>
