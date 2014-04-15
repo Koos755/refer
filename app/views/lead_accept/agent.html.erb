@@ -19,7 +19,7 @@
 
     <%= render 'layouts/lead_details', lead: @lead %>
 
-    <p style="color:green">I, the Receiving Agent, agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
+    <p style="color:green">I, the Receiving Agent, accept this lead and agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
 
     <%= render 'layouts/terms', lead_id: @lead.id, url: agent_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: agent_reply_url({lead_id: @lead.id, accept: 'no'}) %>
     <%#= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>

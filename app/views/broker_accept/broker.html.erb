@@ -5,14 +5,12 @@
     </br>
     <p>Your agent <strong><%= @lead.receiving_agent.name %></strong> has accepted a referral offer from <strong><%= @lead.sending_agent.name %>.</strong></p>
 
-    <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %> of the commission.</p>
-
     <p>Once you approve this referral (as the managing broker), <strong><%= @lead.receiving_agent.name %></strong> will receive the client's contact details.</p>
 
     <%= render 'layouts/lead_details', lead: @lead %>
 
 
-    <p style="color:green">I, the Receiving Broker, agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
+    <p style="color:green">I, the Receiving Broker, accept this lead and agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
 
     <%= render 'layouts/terms', lead_id: @lead.id, url: broker_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: broker_reply_url({lead_id: @lead.id, accept: 'no'}) %>
   </div>

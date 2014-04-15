@@ -5,5 +5,5 @@
   <%= render 'layouts/hidden', lead_id: lead_id %>
   <br>
   <%= button_tag button, class: "btn btn-primary" %>
-  <%= link_to 'Decline', decline_url, method: :post, class: "btn btn-default" if decline == true%>
+  <%= link_to 'Decline', decline_url, method: :post, data: { confirm: "Are you sure you would like to decline this lead?"}, class: "btn btn-default" if decline == true%>
 <% end %>
