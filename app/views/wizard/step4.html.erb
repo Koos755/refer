@@ -15,16 +15,8 @@
 <div class="col-md-4">
   <h4>Referred Client:</h4>
 
-  <ul>
-    <li>Name: <%= @lead.name %></li>
-    <li>Email*: <%= @lead.email %></li>
-    <%= "<li>Mobile Phone: #{number_to_phone(@lead.mobile)}</li>".html_safe if @lead.user.mobile.present? %>
-    <%= "<li>Buying</li>".html_safe if @lead.buying %>
-    <%= "<li>Selling</li>".html_safe if @lead.selling %>
-    <%= "<li>Buying Price Range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}</li>".html_safe if @lead.price_range_start.present? && @lead.price_range_end.present? %>
-    <%= "<li>Buying Location: #{@lead.location}</li>".html_safe if @lead.location.present? %>
-    <%= "<li>Comment: #{@lead.comment}</li>".html_safe if @lead.comment.present? %>
-  </ul>
+  <%= render 'layouts/lead_details', lead: @lead, show_details: true %>
+
   <small>(*Will not be shared with receiving agent until referral is accepted/signed by Receiving Broker/Agent)</small>
   <hr>
     <h4>Receiving Agent:</h4>

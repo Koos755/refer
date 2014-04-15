@@ -13,4 +13,11 @@ class Lead < ActiveRecord::Base
   has_one :broker, through: :receiving_agent
   has_one :brokerage, through: :broker
 
+  def accepted?
+    if self.accepted_by_agent && self.accepted_by_broker
+      return true
+    else
+      return false
+    end
+  end
 end

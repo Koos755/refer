@@ -17,10 +17,10 @@
 
     <p>Once you approve this referral (as the managing broker), your agent will receive the client's contact details.</p>
 
-    <%= render 'layouts/lead_details', lead: @lead %>
+    <%= render 'layouts/lead_details', lead: @lead, show_details: false %>
 
 
-    <p style="color:green">I, the Receiving Broker, accept this referral and agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
+    <p style="color:green">I, <strong><%= @lead.broker.name %></strong> ("Receiving Broker"), accept this referral and agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
 
     <%= render 'layouts/terms', lead_id: @lead.id, url: broker_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: broker_reply_url({lead_id: @lead.id, accept: 'no'}) %>
   </div>

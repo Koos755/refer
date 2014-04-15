@@ -1,4 +1,4 @@
 <h1>Leads#show</h1>
 <p>Find me in app/views/leads/show.html.erb</p>
 
-<%= @lead.name %>
+<%= render 'layouts/lead_details', lead: @lead, show_details: (current_user == @lead.sending_agent.user || @lead.accepted? ? true : false) %>

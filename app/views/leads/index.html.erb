@@ -4,7 +4,7 @@
 
 <ul>
   <% @leads_sent.each do |lead|  %>
-    <li><%= lead.name %></li>
+    <li><%= link_to lead.name, lead_url(lead) %></li>
   <% end %>
 </ul>
 
@@ -12,6 +12,6 @@
 
 <ul>
   <% @leads_received.each do |lead|  %>
-    <li><%= lead.name %></li>
+    <li><%= link_to lead.name, lead_url(lead) %></li>
   <% end %>
 </ul>
