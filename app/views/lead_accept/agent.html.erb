@@ -8,32 +8,34 @@
   </div>
 </div><!-- end row 1 -->
 
-<h1>Accept Referral?</h1>
+  <h1>Accept Referral?</h1>
 
-<div class="row">
+  <div class="row">
+    <div class="col-md-6">
+    </br>
+    <p>This referral offer is from <strong><%= @lead.sending_agent.name %>.</strong></p>
+
+    <p>Once you (and your managing broker) accept, you will receive contact details.</p>
+
+    <%= render 'layouts/lead_details', lead: @lead %>
+
+    <p style="color:green">I, the Receiving Agent, agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
+
+    <%= render 'layouts/terms', lead_id: @lead.id, url: agent_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: agent_reply_url({lead_id: @lead.id, accept: 'no'}) %>
+    <%#= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
+
+
+    </div>
+
   <div class="col-md-6">
-  </br>
-  <p>This referral offer is from <strong><%= @lead.sending_agent.name %>.</strong></p>
-
-  <p>Once you (and your managing broker) accept, you will receive contact details.</p>
-
-  <%= render 'layouts/lead_details', lead: @lead %>
-
-<p style="color:green">I, the Receiving Agent, agree to the proposed referral fee of <%= "#{@lead.referral_percent}%" %>.</p>
-
-  <%= render 'layouts/terms', lead_id: @lead.id, url: agent_reply_url({lead_id: @lead.id, accept: 'yes'}), button: 'Accept Referral', decline: true, decline_url: agent_reply_url({lead_id: @lead.id, accept: 'no'}) %>
-  <%#= link_to 'Accept Referral', agent_reply_url({lead_id: @lead.id, accept: 'yes'}), method: :post, class: "btn btn-primary" %>
-
-
+    <div class="well">
+      <h4>What happens next?</h4>
+      <br>
+      <p>If you accept, the referral will be sent on to your broker for approval.</p>
+      <p>If you decline, the referral is sent back to the referring agent.</p>
+    </div>
   </div>
 
-<div class="col-md-6">
-  <div class="well">
-    <h4>What happens next?</h4>
-    <br>
-    <p>If you accept, the referral will be sent on to your broker for approval.</p>
-    <p>If you decline, the referral is sent back to the referring agent.</p>
-  </div>
 </div>
 
-</div>
+<%= render 'layouts/remove_password_alert' %>

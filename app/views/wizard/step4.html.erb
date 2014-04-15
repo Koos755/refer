@@ -27,12 +27,13 @@
     <%= "<li>Comment: #{@lead.comment}</li>".html_safe if @lead.comment.present? %>
   </ul>
   <small>(*Will not be shared with receiving agent until referral is accepted)</small>
-
+  <hr>
     <h4>Receiving Agent:</h4>
   <ul>
     <li>Name: <%= @lead.receiving_agent.name %></li>
     <li>Email: <%= @lead.receiving_agent.email %></li>
   </ul>
+  <hr>
 </div>
 
 <div class="col-md-4">
@@ -41,7 +42,6 @@
 
     <h3>Referral Summary:</h3>
       <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %>.</p>
-      <p>Read full <%= link_to "Terms and Conditions", about_terms_conditions_url %>.</p>
         <%= render 'layouts/terms', lead_id: @lead.id, url: step4_create_url, button: 'Send Referral', decline: false %>
       <br>
     </div>
