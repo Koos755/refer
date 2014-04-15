@@ -1,2 +1,17 @@
 <h1>Leads#index</h1>
-<p>Find me in app/views/leads/index.html.erb</p>
+
+<h5>Leads send:</h5>
+
+<ul>
+  <% @leads_send.each do |lead|  %>
+    <li><%= lead.name %></li>
+  <% end %>
+</ul>
+
+<h5>Leads Received:</h5>
+
+<ul>
+  <% @leads_received.each do |lead|  %>
+    <li><%= lead.name %></li>
+  <% end %>
+</ul>
