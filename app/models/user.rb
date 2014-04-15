@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_one :agent, :dependent => :destroy
   has_one :broker, :dependent => :destroy
   has_many :leads, :dependent => :destroy
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: { message: "This email is already registered, please sign in" }
   validates :name, presence: true
 
   before_save :clean_mobile

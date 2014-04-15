@@ -1,7 +1,5 @@
 Refer::Application.routes.draw do
 
-  get "leads/index"
-  get "leads/:id" => 'leads#show', as: 'lead'
   root 'home#index'
 
   get "wizard/step1", as: 'step1'
@@ -21,6 +19,7 @@ Refer::Application.routes.draw do
   post "sessions/" => 'sessions#create', as: 'sessions'
   delete "sessions/" => 'sessions#destroy'
   get 'sessions/set_password' => 'sessions#set_password', as: 'set_password'
+  get 'sessions/reset'
 
   get 'sessions/reset' => 'sessions#reset', as: 'reset'
   post 'sessions/reset' => 'sessions#submit_reset'
