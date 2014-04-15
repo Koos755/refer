@@ -25,14 +25,12 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  def reset
-  end
-
   def set_password
     @user = current_user
   end
 
-  def submit_reset
+
+  def submit_set_password
     @user = current_user
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
@@ -41,9 +39,15 @@ class SessionsController < ApplicationController
       flash[:notice] = "Password updated."
       redirect_to root_url
     else
-      flash[:error] = "Something went wrong, please try again."
+      flash.now[:error] = "Something went wrong, please try again."
       render 'set_password'
     end
   end
 
+  def reset
+  end
+
+  def submit_reset
+    @user = User.find_by(email: params[:email])
+  end
 end

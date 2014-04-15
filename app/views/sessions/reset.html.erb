@@ -1,0 +1,13 @@
+<h1>Request Password Reset:</h1>
+
+<%= form_tag(reset_url, method: :post, role: "form") do %>
+
+  <div class="form-group">
+    <%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag 'Send Password Reset Email', class: "btn btn-primary" %>
+  </div>
+
+<% end %>

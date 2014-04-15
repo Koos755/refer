@@ -19,8 +19,7 @@ Refer::Application.routes.draw do
   post "sessions/" => 'sessions#create', as: 'sessions'
   delete "sessions/" => 'sessions#destroy'
   get 'sessions/set_password' => 'sessions#set_password', as: 'set_password'
-  get 'sessions/reset'
-
+  post 'sessions/set_password' => 'sessions#submit_set_password'
   get 'sessions/reset' => 'sessions#reset', as: 'reset'
   post 'sessions/reset' => 'sessions#submit_reset'
 
