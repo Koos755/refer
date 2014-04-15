@@ -9,13 +9,13 @@ class LeadsController < ApplicationController
 
   def index
     if current_user.broker.present?
-      @leads_send = current_user.broker.leads_send
+      @leads_sent = current_user.broker.leads_sent
       @leads_received = current_user.broker.leads_received
     elsif current_user.agent.present?
-      @leads_send = current_user.agent.leads_send
+      @leads_sent = current_user.agent.leads_sent
       @leads_received = current_user.agent.leads_received
     else
-      @leads_send = []
+      @leads_sent = []
       @leads_received =[]
     end
   end
