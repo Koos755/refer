@@ -33,13 +33,21 @@
     <li>Email: <%= @lead.receiving_agent.email %></li>
   </ul>
   <hr>
+
+      <h4>Sending Agent:</h4>
+  <ul>
+    <li>Name: <%= @lead.sending_agent.name %></li>
+    <li>Email: <%= @lead.sending_agent.email %></li>
+  </ul>
+  <hr>
 </div>
+
 
 <div class="col-md-4">
   <div class="panel panel-default">
   <div class="panel-body">
 
-    <h3>Referral Summary:</h3>
+    <h3>Referral Summary</h3>
       <p>The requested referral fee is <%= "#{@lead.referral_percent}%" %>.</p>
         <%= render 'layouts/terms', lead_id: @lead.id, url: step4_create_url, button: 'Send Referral', decline: false %>
       <br>
