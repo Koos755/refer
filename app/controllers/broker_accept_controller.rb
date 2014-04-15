@@ -7,17 +7,17 @@ class BrokerAcceptController < ApplicationController
   end
 
   def broker_reply
+    @lead.accepted_by_broker_time = Time.now
     if params[:accept] =='yes'
-      @lead.accepted_by_broker_time = Time.now
       @lead.accepted_by_broker = true
       if @lead.save
         WizardMail.lead_accepted(@lead).deliver
         redirect_to broker_step2_url({lead_id: @lead.id})
       end
     elsif params[:accept] =='no'
-      @lead.accepted_by_agent = false
+      @lead.accepted_by_broker = false
       if @lead.save
-        #TODO add decline path
+        render 'broker_decline'
       end
     end
   end
