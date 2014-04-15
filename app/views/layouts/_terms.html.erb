@@ -1,7 +1,6 @@
 <%= form_tag(url, method: :post) do %>
-<p>Read full <%= link_to "Terms and Conditions", about_terms_conditions_url %>.</p>
   <%= check_box_tag :accepted_terms, true, false, required: true %>
-  <%= label_tag :accepted_terms, "I accept the Terms and Conditions" %><br>
+  <%= label_tag :accepted_terms, "I accept the #{link_to "Terms and Conditions", about_terms_conditions_url}".html_safe %><br>
   <%= render 'layouts/hidden', lead_id: lead_id %>
   <br>
   <%= button_tag button, class: "btn btn-primary" %>
