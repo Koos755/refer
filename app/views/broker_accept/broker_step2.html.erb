@@ -29,13 +29,13 @@
         <%= text_field_tag :address, @brokerage.address, placeholder: "Street Address*", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= text_field_tag :city, nil, placeholder: "City*", class: "form-control", required: true %>
+        <%= text_field_tag :city, @brokerage.city, placeholder: "City*", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= select_tag :state, options_for_select(us_states), prompt: "- Select State* -", class: "form-control", required: true %>
+        <%= select_tag :state, options_for_select(us_states, selected: @brokerage.state), prompt: "- Select State* -", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= text_field_tag :zip, nil, placeholder: "Zip Code*", class: "form-control", required: true %>
+        <%= text_field_tag :zip, @brokerage.zip, placeholder: "Zip Code*", class: "form-control", required: true %>
       </div>
 
       <div class="form-group">
