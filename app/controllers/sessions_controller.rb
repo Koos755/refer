@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-    if  user.present?
+    if  user.present? && user.authenticate(params[:password])
       flash[:notice] = "Signed in sucessfully."
       session[:user_id] = user.id
       if request.referrer.split('/').last == 'step1'

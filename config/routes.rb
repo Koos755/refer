@@ -1,5 +1,7 @@
 Refer::Application.routes.draw do
 
+  get "leads/index"
+  get "leads/:id" => 'leads#show', as: 'lead'
   root 'home#index'
 
   get "wizard/step1", as: 'step1'
