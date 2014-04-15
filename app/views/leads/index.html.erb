@@ -14,7 +14,7 @@
     </tr>
     <% @leads_sent.each do |lead|  %>
       <tr>
-        <td><a href="#"><%= lead.name %></a></td>
+        <td><a href="#"><%= link_to lead.name, lead_url(lead) %></a></td>
         <td></td>
         <td></td>
         <td></td>
@@ -37,7 +37,7 @@
     </tr>
     <% @leads_received.each do |lead|  %>
       <tr>
-        <td><%= lead.name %></td>
+        <td><%= link_to lead.name, lead_url(lead) %></td>
         <td></td>
         <td></td>
         <td></td>
@@ -59,14 +59,14 @@
       <th>Last Updated</th>
       <th>Agent Name</th>
     </tr>
-    <%# @leads_sent.each do |lead|  %>
+    <% @leads_sent.each do |lead|  %>
       <tr>
-        <td><a href="#"><%#= lead.name %></a></td>
+        <td><a href="#"><%= link_to lead.name, lead_url(lead) %></a></td>
         <td></td>
         <td></td>
         <td></td>
         <td>
-      <%# end %>
+      <% end %>
       </td>
     </tr>
   </table>
