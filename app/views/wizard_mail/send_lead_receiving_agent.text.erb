@@ -1,28 +1,27 @@
 Hi <%= @lead.receiving_agent.name %>,
 
-You have a real estate referral from <%= @lead.sending_agent.name %>!
+You have a real estate referral from <%= @lead.sending_agent.name %>.
 
-To review the offer, just visit this link on SureRefer:
+To review and accept the referral, just visit this link on SureRefer:
 
 <%= @url %>
 
 REFERRAL DETAILS
 
-Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling && @lead.buying %><%= "Buying" if @lead.buying %> in your local area
-<%= "Price range: #{@lead.price_range_start} to #{@lead.price_range_end}" if @lead.price_range_start.present? && @lead.price_range_end.present? %>
+Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling && @lead.buying %><%= "Buying" if @lead.buying %> in your local area.
+
+<%= "Price range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}" if @lead.price_range_start.present? && @lead.price_range_end.present? %>
 
 If you want to verify the referral, feel free to contact the sending agent directly:
 
-SENDING AGENT
-
-<%= @lead.sending_agent.name %>
-<%= "Mobile phone:".html_safe if @lead.sending_agent.mobile %>
+SENDING AGENT: <%= @lead.sending_agent.name %>
+<%= "Mobile phone: #{number_to_phone(@lead.mobile)}".html_safe if @lead.sending_agent.mobile %>
 <%= @lead.sending_agent.email %>
 
 You can learn more about SureRefer in our Frequently Asked Questions (FAQ):
 http://www.surerefer.com/about
 
-Thanks for using SureRefer, and good fortune!
+Thanks for using SureRefer!
 
 ----------------------------------------------------------------------------------
 
