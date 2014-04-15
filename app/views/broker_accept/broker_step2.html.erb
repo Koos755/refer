@@ -1,10 +1,36 @@
-<h1>Howdy</h1>
+<h1>Almost done!</h1>
+<br>
+<div class="row">
+  <div class="col-md-6">
 
-<%= bootstrap_form_for(@brokerage, url: broker_step3_url, method: :post) do |f| %>
-  <%= f.text_field :name, placeholder: 'Brokerage Name', hide_label: true  %>
-  <%= f.text_field :city, placeholder: 'City', hide_label: true  %>
-  <%= f.text_field :state, placeholder: 'State', hide_label: true  %>
-  <%= f.submit 'Save', :class => 'btn btn-primary', id: 'button' %>
-<% end %>
-<!-- Add Brokerage detail... -->
+    <%= form_tag(@destination_url, method: :post, role: "form") do %>
+      <div class="form-group">
+        <%= label_tag :broker_name, 'Is your name correct?' %>
+        <%= text_field_tag :broker_name, current_user.name, placeholder: "Your Name", class: "form-control", required: true %>
+      </div>
+      <br>
+      <p><strong>Lastly, we need a little more information about the brokerage.</strong></p>
+
+      <div class="form-group">
+        <%= text_field_tag :name, @brokerage.name, placeholder: "Brokerage Name", class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :address, @brokerage.address, placeholder: "Address", class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :city, nil, placeholder: "City", class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= select_tag :state, options_for_select(us_states), prompt: "- Select State -", class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :zip, nil, placeholder: "Zip", class: "form-control", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= button_tag "Update Brokerage Details", class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
 

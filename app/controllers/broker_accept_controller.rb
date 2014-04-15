@@ -25,10 +25,24 @@ class BrokerAcceptController < ApplicationController
   def broker_step2
     @brokerage = @lead.brokerage
     @broker = @lead.broker
+    @destination_url = broker_step3_url({lead_id: @lead.id})
   end
 
 
   def broker_step3
+    broker_user = @lead.broker.user
+    broker_user.name = params[:broker_name]
+    broker_user.save
+    @brokerage = @lead.brokerage
+    if @brokerage.update(step3_params)
+      redirect_to broker_step4_url({lead_id: @lead.id})
+    else
+      @broker = @lead.broker
+      render 'broker_step2'
+    end
+  end
+
+  def broker_step4
     render 'success_broker'
   end
 
@@ -43,5 +57,9 @@ class BrokerAcceptController < ApplicationController
       flash[:error] = "You are not allowed to access that page!"
       redirect_to root_url
     end
+  end
+
+  def step3_params
+    params.permit(:name, :address, :city, :state, :zip)
   end
 end
