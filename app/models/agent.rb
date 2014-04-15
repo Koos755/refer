@@ -1,5 +1,7 @@
 class Agent < ActiveRecord::Base
 
+  include SaveExtentions
+
   belongs_to :user
   delegate :name, to: :user
   delegate :mobile, to: :user

@@ -1,5 +1,7 @@
 class Lead < ActiveRecord::Base
 
+  include SaveExtentions
+
   belongs_to :user
   belongs_to :sending_agent, class_name: "Agent"
   belongs_to :receiving_agent, class_name: "Agent"
@@ -11,10 +13,4 @@ class Lead < ActiveRecord::Base
   has_one :broker, through: :receiving_agent
   has_one :brokerage, through: :broker
 
-
-  def name=(name)
-    user = self.user
-    user.name = name
-    user.save
-  end
 end
