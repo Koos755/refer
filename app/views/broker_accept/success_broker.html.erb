@@ -15,7 +15,7 @@
     <p>The client's contact information has been sent to <strong><%= @lead.receiving_agent.name %>.</strong></p>
     <p>Review/print the agreement for this referral <strong>here</strong>.</p>
   </br>
-    <button type="button" class="btn btn-primary">Track your referrals</button>
+    <%= link_to "Track your referrals", leads_url, class: "btn btn-primary" %>
   </div>
 
 </div><!-- end row -->
