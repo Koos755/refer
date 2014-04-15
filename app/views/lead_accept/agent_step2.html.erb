@@ -27,11 +27,6 @@
       </div>
 
     <% end %>
-
-    <script type="text/javascript">
-      $('#button').before('<%= j(render 'layouts/brokerage_name') %>');
-      $('#user_password').replaceWith('<%= j(render 'layouts/hidden', lead_id: @lead.id) %>');
-    </script>
   </div>
 
 
