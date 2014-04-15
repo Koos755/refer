@@ -1,5 +1,6 @@
 class WizardMail < ActionMailer::Base
-  default from: "no-reply@surerefer.com"
+  default from: "no-reply@surerefer.com",
+          name: "SureRefer"
 
   def send_signup_email(user)
     @user = user
@@ -28,7 +29,7 @@ class WizardMail < ActionMailer::Base
     @sending_agent = @lead.sending_agent
     @broker = @receiving_agent.broker
     @url = lead_url(@lead)
-    mail( :to => [@receiving_agent.email, @sending_agent.email, @broker.email],
+    mail( :to => "#{@receiving_agent.email},#{@sending_agent.email},#{@broker.email}",
       :subject => "#{@sending_agent.name}/#{@receiving_agent.name} referral accepted" )
   end
 

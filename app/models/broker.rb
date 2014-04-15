@@ -8,5 +8,6 @@ class Broker < ActiveRecord::Base
   delegate :name, to: :user
   delegate :mobile, to: :user
   delegate :email, to: :user
+  has_many :leads, through: :agents
 
 end
