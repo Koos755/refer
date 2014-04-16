@@ -2,7 +2,7 @@ Hi <%= @lead.receiving_agent.name %>,
 
 You have a real estate referral from <%= @lead.sending_agent.name %>.
 
-To review and accept the referral, just visit this link on SureRefer:
+To review and accept the referral, visit this link on SureRefer:
 
 <%= @url %>
 
@@ -15,7 +15,7 @@ Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling &&
 If you want to verify the referral, feel free to contact the sending agent directly:
 
 SENDING AGENT: <%= @lead.sending_agent.name %>
-<%= "Mobile phone: #{number_to_phone(@lead.mobile)}".html_safe if @lead.sending_agent.mobile %>
+<%= "Mobile phone: #{number_to_phone(@lead.mobile)}" if @lead.sending_agent.mobile %>
 <%= @lead.sending_agent.email %>
 
 You can learn more about SureRefer in our Frequently Asked Questions (FAQ):

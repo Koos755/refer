@@ -28,14 +28,14 @@ class LeadsController < ApplicationController
 
   def only_agents_and_broker_can_view_lead
     unless [@lead.sending_agent.try(:user), @lead.receiving_agent.try(:user), @lead.broker.try(:user)].include?(current_user)
-      flash[:error] = "You are not allowed to view this page!"
+      flash[:error] = "Sorry, you have to be signed in and have permission to view this page."
       redirect_to root_url
     end
   end
 
   def only_current_users
     unless current_user.present?
-      flash[:error] = "You have to be logged in to view that page"
+      flash[:error] = "Sorry, you have to be signed in to view this page."
       redirect_to root_url
     end
   end

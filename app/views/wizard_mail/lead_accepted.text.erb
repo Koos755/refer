@@ -2,15 +2,13 @@ Hello,
 
 The referral from <%= @sending_agent.name %> to <%= @receiving_agent.name %> (for <%= @lead.user.name %>) has been accepted by all parties.
 
-Lead Details:
+CLIENT DETAILS
 
-Client Name:
+Name: <%= @lead.name %>
 
-<%= @lead.name %>
+Email: <%= @lead.email if @lead.email.present? %>
 
-<%= @lead.email if @lead.email.present? %>
-
-<%= "Mobile phone: #{@lead.mobile}"  if @lead.mobile.present? %>
+<%= "Mobile phone: #{number_to_phone(@lead.mobile)}" if @lead.mobile.present? %>
 
 Client plans on <%= "Selling" if @lead.selling %><%= " and " if @lead.selling && @lead.buying %><%= "Buying" if @lead.buying %> in your local area,
 <%= "Price range: #{number_to_currency(@lead.price_range_start, precision: 0)} to #{number_to_currency(@lead.price_range_end, precision: 0)}" if @lead.price_range_start.present? && @lead.price_range_end.present? %>
