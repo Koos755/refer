@@ -31,19 +31,19 @@
 
 <strong>Authorized Referring Broker/Agent:</strong>
 <p><%= @lead.sending_agent.name %></p>
-<p><%= @lead.accepted_terms.strftime('%m/%e/%Y %I:%M:%S%P') %></p>
+<p><%= "#{@lead.accepted_terms.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
 <p>/Unique ID/</p>
 
 <strong>Authorized Receiving Agent:</strong>
-<p>/Signature/</p>
-<p>/Timestamp/</p>
+<p><%= @lead.receiving_agent.name %></p>
+<p><%= "#{@lead.accepted_by_agent_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
 <p>/Unique ID/</p>
-<p>/Brokerage Name/</p>
-<p>/address/, /city/, /state/ /zip/ /postal code/</p>
+<p><%= @lead.brokerage.name %></p>
+<p><%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
 
 <strong>Authorized Receiving Broker:</strong>
-<p>/Signature/</p>
-<p>/Timestamp/</p>
+<p><%= @lead.broker.name %></p>
+<p><%= "#{@lead.accepted_by_broker_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
 <p>/Unique ID/</p>
-<p>/Brokerage Name/</p>
-<p>/address/, /city/, /state/ /zip/ /postal code/</p>
+<p><%= @lead.brokerage.name %></p>
+<p><%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
