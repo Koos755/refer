@@ -1,49 +1,59 @@
-<h2>Referral Agreement</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-<h4>PARTIES</h4>
+    <h2>Referral Agreement</h2>
+    <hr>
+    <h4>PARTIES</h4>
 
-<strong>Referring Agent/Broker</strong>
-<p>NAME: <%= @lead.sending_agent.name %></p>
-<p>E-MAIL ADDRESS: <%= @lead.sending_agent.email %></p>
+    <p><strong>Referring Agent/Broker</strong><br>
+    NAME: <%= @lead.sending_agent.name %><br>
+    EMAIL: <%= @lead.sending_agent.email %></p>
 
-<strong>Receiving Agent/Broker</strong>
-<p>NAME: <%= @lead.receiving_agent.name %></p>
-<p>E-MAIL ADDRESS: <%= @lead.receiving_agent.email %></p>
+    <p><strong>Receiving Agent/Broker</strong><br>
+    NAME: <%= @lead.receiving_agent.name %><br>
+    EMAIL: <%= @lead.receiving_agent.email %></p>
 
-<strong>Authorized Receiving Broker</strong>
-<p>NAME: <%= @lead.broker.name %></p>
-<p>E-MAIL ADDRESS: <%= @lead.broker.email %></p>
+    <p><strong>Authorized Receiving Broker</strong><br>
+    NAME: <%= @lead.broker.name %><br>
+    EMAIL: <%= @lead.broker.email %></p>
 
-<strong>Referred Client</strong>
-<p>NAME: @lead.name</p>
+    <p><strong>Referred Client</strong><br>
+    NAME: <%= @lead.name %><br>
+    EMAIL: <%= @lead.email %></p>
 
-<h4>REFERRAL FEE PARTICULARS</h4>
+    <br>
 
-<p>In the event Receiving Broker/Agent receives a commission or other payment for services rendered in connection with a real estate transaction consummated involving /client name/ (the Referred Client), Referring Broker/Agent will be entitled to a referral fee*, and Receiving Broker/Agent agrees to pay said referral fee, in the amount of:</p>
+    <h4>REFERRAL FEE PARTICULARS</h4>
 
-<p><%= @lead.referral_percent %> percent of the commission that Receiving Broker/Agent receives in connection with the foregoing.</p>
+    <p>In the event Receiving Broker/Agent receives a commission or other payment for services rendered in connection with a real estate transaction consummated involving /client name/ (the Referred Client), Referring Broker/Agent will be entitled to a referral fee*, and Receiving Broker/Agent agrees to pay said referral fee, in the amount of:</p>
 
-<p>The parties hereby agree that the referral fee shall be fully paid by the Receiving Broker/Agent no later than 10 business days after the transaction is completed.</p>
+    <p><%= @lead.referral_percent %> percent (%) of the commission that Receiving Broker/Agent receives in connection with the foregoing.</p>
 
-<p>*Referral fees may be subject to withholding tax or other forms of taxes in the country in which the transaction takes place. Referring agents should be aware of state, provincial, or local laws in their respective markets with regards to paying referrals.</p>
+    <p>The parties hereby agree that the referral fee shall be fully paid by the Receiving Broker/Agent no later than 10 business days after the transaction is completed.</p>
 
-<h4>SIGNATURES</h4>
+    <p>*Referral fees may be subject to withholding tax or other forms of taxes in the country in which the transaction takes place. Referring agents should be aware of state, provincial, or local laws in their respective markets with regards to paying referrals.</p>
 
-<strong>Authorized Referring Broker/Agent:</strong>
-<p><%= @lead.sending_agent.name %></p>
-<p><%= "#{@lead.accepted_terms.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
-<p>/Unique ID/</p>
+    <br>
 
-<strong>Authorized Receiving Agent:</strong>
-<p><%= @lead.receiving_agent.name %></p>
-<p><%= "#{@lead.accepted_by_agent_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
-<p>/Unique ID/</p>
-<p><%= @lead.brokerage.name %></p>
-<p><%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
+    <h4>SIGNATURES</h4>
 
-<strong>Authorized Receiving Broker:</strong>
-<p><%= @lead.broker.name %></p>
-<p><%= "#{@lead.accepted_by_broker_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
-<p>/Unique ID/</p>
-<p><%= @lead.brokerage.name %></p>
-<p><%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
+    <p><strong>Authorized Referring Broker/Agent:</strong><br>
+    <%= @lead.sending_agent.name %><br>
+    <%= "#{@lead.accepted_terms.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
+
+    <p><strong>Authorized Receiving Agent:</strong><br>
+    <%= @lead.receiving_agent.name %><br>
+    <%= "#{@lead.accepted_by_agent_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %><br>
+    <%= @lead.brokerage.name %><br>
+    <%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
+
+    <p><strong>Authorized Receiving Broker:</strong><br>
+    <%= @lead.broker.name %><br>
+    <%= "#{@lead.accepted_by_broker_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %><br>
+    <%= @lead.brokerage.name %><br>
+    <%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
+    <hr>
+  </div>
+</div>
+
+<br>
