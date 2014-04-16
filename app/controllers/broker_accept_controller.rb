@@ -16,6 +16,7 @@ class BrokerAcceptController < ApplicationController
       end
     elsif params[:accept] =='no'
       @lead.accepted_by_broker = false
+      WizardMail.receiving_broker_decline(@lead).deliver
       if @lead.save
         render 'broker_decline'
       end

@@ -21,6 +21,7 @@ class LeadAcceptController < ApplicationController
     elsif params[:accept] =='no'
       @lead.accepted_by_agent = false
       @lead.accepted_by_agent_time = Time.now
+      WizardMail.receiving_agent_decline(@lead).deliver
       if @lead.save
         render 'agent_decline'
       end

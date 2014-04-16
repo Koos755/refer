@@ -14,6 +14,11 @@ class WizardMail < ActionMailer::Base
       :subject => "Real estate referral from #{@lead.sending_agent.user.name}" )
   end
 
+  def receiving_agent_decline(lead)
+    @lead = lead
+    mail( to: @lead.sending_agent.email, subject: "Referral for #{@lead.name} rejected")
+  end
+
   def send_lead_broker(lead, token)
     @lead = lead
     @token = token
@@ -30,6 +35,11 @@ class WizardMail < ActionMailer::Base
     @url = lead_url(@lead)
     mail( :to => "#{@receiving_agent.email},#{@sending_agent.email},#{@broker.email}",
       :subject => "#{@sending_agent.name}/#{@receiving_agent.name} referral accepted" )
+  end
+
+  def receiving_broker_decline(lead)
+    @lead = lead
+    mail( to: "#{@lead.sending_agent.email},#{@lead.receiving_agent.email}", subject: "Referral for #{@lead.name} rejected")
   end
 
 end
