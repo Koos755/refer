@@ -1,8 +1,8 @@
 class LeadsController < ApplicationController
 
-  before_action :only_current_users
-  before_action :set_lead, only: [:show]
-  before_action :only_agents_and_broker_can_view_lead, only: [:show]
+  before_action :only_current_users, only: [:index]
+  before_action :set_lead, only: [:show, :agreement]
+  before_action :only_agents_and_broker_can_view_lead, only: [:show, :agreement]
 
   def show
   end
@@ -17,6 +17,13 @@ class LeadsController < ApplicationController
     else
       @leads_sent = []
       @leads_received =[]
+    end
+  end
+
+  def agreement
+    unless @lead.accepted?
+      flash.now[:error] = "You can only view agreement once it has been accepted by all parties"
+      redirect_to leads_url
     end
   end
 

@@ -22,11 +22,13 @@ class TokenController < ApplicationController
           redirect_to broker_step1_url({lead_id: token.lead.id})
         end
       elsif token.token_type == 'password_reset'
-        if token.created_at > 7200
+        if Time.now - token.created_at > 7200
+          flash.now[:error] = "Token have expired. Please request a new one"
           render 'value'
+        else
+          session[:user_id] = token.user.id
+          render 'sessions/set_password'
         end
-        @user = token.user
-        render 'new_password'
       end
     else
       flash[:notice] = "Unknown Token...."

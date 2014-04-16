@@ -48,6 +48,13 @@ class SessionsController < ApplicationController
   end
 
   def submit_reset
-    @user = User.find_by(email: params[:email])
+    user = User.find_by(email: params[:email])
+    if user.present?
+      token = Token.new
+      token.password_reset_token(user)
+    else
+      PasswordMails.email_unknown(params[:email]).deliver
+    end
+    render 'email_sent'
   end
 end

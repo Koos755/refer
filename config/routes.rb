@@ -43,7 +43,7 @@ Refer::Application.routes.draw do
   post "lead_accept/broker/step3" => 'broker_accept#broker_step3', as: 'broker_step3'
   get "lead_accept/broker/step4" => 'broker_accept#broker_step4', as: 'broker_step4'
 
-
+  get "leads/agreement/:id" => 'leads#agreement', as: 'agreement'
   resources :leads
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

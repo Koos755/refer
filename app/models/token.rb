@@ -23,6 +23,14 @@ class Token < ActiveRecord::Base
     WizardMail.send_lead_broker(lead, self).deliver
   end
 
+  def password_reset_token(user)
+    self.create_token
+    self.token_type = 'password_reset'
+    self.user_id = user.id
+    self.save
+    PasswordMails.forgot_password(user, self).deliver
+  end
+
   def create_token
     self.value = SecureRandom.urlsafe_base64(50)
   end
