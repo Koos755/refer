@@ -39,17 +39,17 @@
 
     <p><strong>Authorized Referring Broker/Agent:</strong><br>
     <%= @lead.sending_agent.name %><br>
-    <%= "#{@lead.accepted_terms.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></p>
+    Date: <span style="color:green"><%= "#{@lead.accepted_terms.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></span></p>
 
     <p><strong>Authorized Receiving Agent:</strong><br>
     <%= @lead.receiving_agent.name %><br>
-    <%= "#{@lead.accepted_by_agent_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %><br>
+    Date: <span style="color:green"><%= "#{@lead.accepted_by_agent_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></span><br>
     <%= @lead.brokerage.name %><br>
     <%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
 
     <p><strong>Authorized Receiving Broker:</strong><br>
     <%= @lead.broker.name %><br>
-    <%= "#{@lead.accepted_by_broker_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %><br>
+    Date: <span style="color:green"><%= "#{@lead.accepted_by_broker_time.strftime('%m/%e/%Y %I:%M:%S%P')} (CST)" %></span><br>
     <%= @lead.brokerage.name %><br>
     <%= "#{@lead.brokerage.address}, #{@lead.brokerage.city}, #{@lead.brokerage.state}, #{@lead.brokerage.zip}" %></p>
     <hr>
