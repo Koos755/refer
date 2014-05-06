@@ -11,6 +11,7 @@ class BrokerAcceptController < ApplicationController
     if params[:accept] =='yes'
       @lead.accepted_by_broker = true
       if @lead.save
+        lead_status = LeadStatus.create({status_string: "Accepted", status_number: 1, lead_id: @lead.id})
         WizardMail.lead_accepted(@lead).deliver
         redirect_to broker_step2_url({lead_id: @lead.id})
       end

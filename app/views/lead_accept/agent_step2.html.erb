@@ -23,13 +23,13 @@
       <p>If you are your own broker, fill in your personal information.</p>
 
       <div class="form-group">
-        <%= text_field_tag :name, @lead.broker.name, placeholder: "Broker's First & Last Name", class: "form-control", required: true %>
+        <%= text_field_tag :name, @lead.broker.try(:name), placeholder: "Broker's First & Last Name", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= email_field_tag :email, @lead.broker.email, placeholder: "Broker's Email", class: "form-control", required: true %>
+        <%= email_field_tag :email, @lead.broker.try(:email), placeholder: "Broker's Email", class: "form-control", required: true %>
       </div>
       <div class="form-group">
-        <%= text_field_tag :brokerage_name, @lead.brokerage.name, placeholder: "Brokerage Name (Example: XYZ Realty)", class: "form-control", required: true %>
+        <%= text_field_tag :brokerage_name, @lead.brokerage.try(:name), placeholder: "Brokerage Name (Example: XYZ Realty)", class: "form-control", required: true %>
       </div>
 
       <div class="form-group">
