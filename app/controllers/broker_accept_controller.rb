@@ -45,6 +45,29 @@ class BrokerAcceptController < ApplicationController
   end
 
   def broker_step4
+    html = render_to_string(action: "agreement.html.erb", layout: false)
+    kit = PDFKit.new(html)
+    thepdf = kit.to_file("#{Rails.root}/tmp/#{@lead.id}-agreement.pdf")
+
+    # create a connection
+    connection = Fog::Storage.new({
+      :provider                 => 'AWS',
+      :aws_access_key_id        => "AKIAI36NBZ34L5YF5EBA",
+      :aws_secret_access_key    => "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"
+    })
+
+    # First, a place to contain the glorious details
+    directory = connection.directories.create(
+      :key    => "agreement-#{Time.now.to_i}", # globally unique name
+      :public => false
+    )
+
+    # upload that resume
+    file = directory.files.create(
+      :key    => "#{@lead.id}-agreement.pdf",
+      :body   => File.open("#{Rails.root}/tmp/#{@lead.id}-agreement.pdf"),
+      :public => false
+    )
     render 'success_broker'
   end
 

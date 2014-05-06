@@ -44,6 +44,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'sendgrid'
 gem 'wkhtmltopdf-binary'
 gem 'pdfkit'
+gem "fog"
 
 # Use unicorn as the app server
 # gem 'unicorn'
