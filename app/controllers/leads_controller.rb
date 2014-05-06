@@ -25,6 +25,8 @@ class LeadsController < ApplicationController
       flash.now[:error] = "You can only view agreement once it has been accepted by all parties"
       redirect_to leads_url
     end
+
+    render :layout => false
   end
 
   private
