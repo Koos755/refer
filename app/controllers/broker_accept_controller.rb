@@ -56,18 +56,14 @@ class BrokerAcceptController < ApplicationController
       :aws_secret_access_key    => "QjZ8093tD1mr7j1DJyhQFdVUXFP58R94lW5whwoU"
     })
 
-    # First, a place to contain the glorious details
-    directory = connection.directories.create(
-      :key    => "agreement-#{Time.now.to_i}", # globally unique name
-      :public => false
-    )
+    directory = connection.directories.get("refer-agreements")
 
-    # upload that resume
     file = directory.files.create(
       :key    => "#{@lead.id}-agreement.pdf",
       :body   => File.open("#{Rails.root}/tmp/#{@lead.id}-agreement.pdf"),
       :public => false
     )
+
     render 'success_broker'
   end
 
