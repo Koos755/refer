@@ -5,6 +5,7 @@ class LeadsController < ApplicationController
   before_action :only_agents_and_broker_can_view_lead, only: [:show, :agreement]
 
   def show
+    @url = @lead.get_temp_url
   end
 
   def index
@@ -18,15 +19,6 @@ class LeadsController < ApplicationController
       @leads_sent = []
       @leads_received =[]
     end
-  end
-
-  def agreement
-    unless @lead.accepted?
-      flash.now[:error] = "You can only view agreement once it has been accepted by all parties"
-      redirect_to leads_url
-    end
-
-    render :layout => false
   end
 
   private

@@ -49,20 +49,7 @@ class BrokerAcceptController < ApplicationController
     kit = PDFKit.new(html)
     thepdf = kit.to_file("#{Rails.root}/tmp/#{@lead.id}-agreement.pdf")
 
-    # create a connection
-    connection = Fog::Storage.new({
-      :provider                 => 'AWS',
-      :aws_access_key_id        => "AKIAI36NBZ34L5YF5EBA",
-      :aws_secret_access_key    => "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"
-    })
-
-    directory = connection.directories.get("refer-agreements")
-
-    file = directory.files.create(
-      :key    => "#{@lead.id}-agreement.pdf",
-      :body   => File.open("#{Rails.root}/tmp/#{@lead.id}-agreement.pdf"),
-      :public => false
-    )
+    @lead.save_agreement
 
     render 'success_broker'
   end
