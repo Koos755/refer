@@ -58,6 +58,7 @@ class BrokerAcceptController < ApplicationController
 
   def set_lead
     @lead = Lead.find_by(id: params[:lead_id])
+    @url = @lead.get_temp_url
   end
 
   def only_broker

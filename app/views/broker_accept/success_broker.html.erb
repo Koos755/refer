@@ -13,7 +13,7 @@
   <div class="col-md-6 col-md-offset-3">
     <h3>Referral Agreement Signed</h3>
     <p>The client's contact information has been sent to <strong><%= @lead.receiving_agent.name %>.</strong></p>
-    <p>Review/print the agreement for this referral <strong>here</strong>.</p>
+    <p>Review/print the agreement for this referral <strong><%= link_to "here", @url, target: "_blank" %></strong>.</p>
   </br>
     <%= link_to "Track your referrals", leads_url, class: "btn btn-primary" %>
   </div>

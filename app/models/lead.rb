@@ -22,13 +22,7 @@ class Lead < ActiveRecord::Base
   end
 
   def save_agreement
-    connection = Fog::Storage.new({
-      :provider                 => 'AWS',
-      :aws_access_key_id        => "AKIAI36NBZ34L5YF5EBA",
-      :aws_secret_access_key    => "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"
-    })
-
-    directory = connection.directories.get("refer-agreements")
+    directory = establish_fog_service_and_find_bucket("refer-agreements")
 
     file = directory.files.create(
       :key    => "#{self.id}-agreement.pdf",
@@ -38,15 +32,23 @@ class Lead < ActiveRecord::Base
   end
 
   def get_temp_url
-
     bucket = establish_s3_service_and_find_bucket("refer-agreements")
-
     object = bucket.objects.find("#{self.id}-agreement.pdf")
-
     url = object.temporary_url(expires_at = Time.now + 3600)
   end
 
   private
+
+  def establish_fog_service_and_find_bucket(bucket_name)
+    connection = Fog::Storage.new({
+      :provider                 => 'AWS',
+      :aws_access_key_id        => "AKIAI36NBZ34L5YF5EBA",
+      :aws_secret_access_key    => "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"
+    })
+
+    directory = connection.directories.get(bucket_name)
+  end
+
 
   def establish_s3_service_and_find_bucket(bucket_name)
     service = S3::Service.new(:access_key_id => "AKIAI36NBZ34L5YF5EBA",
