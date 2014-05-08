@@ -5,7 +5,7 @@ class LeadsController < ApplicationController
   before_action :only_agents_and_broker_can_view_lead, only: [:show, :agreement]
 
   def show
-    @url = @lead.get_temp_url
+    @url = @lead.get_temp_url if @lead.accepted?
   end
 
   def index
