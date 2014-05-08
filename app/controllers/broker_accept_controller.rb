@@ -50,7 +50,7 @@ class BrokerAcceptController < ApplicationController
     thepdf = kit.to_file("#{Rails.root}/tmp/#{@lead.id}-agreement.pdf")
 
     @lead.save_agreement
-
+    @url = @lead.get_temp_url
     render 'success_broker'
   end
 
@@ -58,7 +58,6 @@ class BrokerAcceptController < ApplicationController
 
   def set_lead
     @lead = Lead.find_by(id: params[:lead_id])
-    @url = @lead.get_temp_url
   end
 
   def only_broker
