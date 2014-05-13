@@ -54,7 +54,7 @@ class Lead < ActiveRecord::Base
   def establish_s3_service_and_find_bucket(bucket_name)
     service = S3::Service.new(:access_key_id => ENV["AMAZON_ACCESS_KEY"],
                           :secret_access_key => ENV["AMAZON_SECRET_KEY"])
-    bucket = service.buckets.find("refer-agreements-development")
+    bucket = service.buckets.find(bucket_name)
   end
 
 end
