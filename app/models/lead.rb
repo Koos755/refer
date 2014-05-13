@@ -33,7 +33,7 @@ class Lead < ActiveRecord::Base
 
   def get_temp_url
     bucket = establish_s3_service_and_find_bucket(ENV['AMAZON_BUCKET'])
-    object = bucket.objects.find("#{self.id}-agreement.pdf")
+    object = bucket.object("#{self.id}-agreement.pdf")
     url = object.temporary_url(expires_at = Time.now + 3600)
   end
 
@@ -43,7 +43,8 @@ class Lead < ActiveRecord::Base
     connection = Fog::Storage.new({
       :provider                 => 'AWS',
       :aws_access_key_id        => ENV["AMAZON_ACCESS_KEY"],
-      :aws_secret_access_key    => ENV["AMAZON_SECRET_KEY"]
+      :aws_secret_access_key    => ENV["AMAZON_SECRET_KEY"],
+      region: 'us-west-2'
     })
 
     directory = connection.directories.get(bucket_name)
@@ -53,7 +54,7 @@ class Lead < ActiveRecord::Base
   def establish_s3_service_and_find_bucket(bucket_name)
     service = S3::Service.new(:access_key_id => ENV["AMAZON_ACCESS_KEY"],
                           :secret_access_key => ENV["AMAZON_SECRET_KEY"])
-    bucket = service.buckets.find(bucket_name)
+    bucket = service.buckets.find("refer-agreements-development")
   end
 
 end
