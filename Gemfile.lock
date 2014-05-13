@@ -37,6 +37,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     erubis (2.7.0)
     excon (0.33.0)
     execjs (2.0.2)
@@ -153,6 +158,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap_form
   coffee-rails (~> 4.0.0)
+  dotenv-rails
   fog
   jbuilder (~> 1.2)
   jquery-rails
