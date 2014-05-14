@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Refer::Application.config.secret_key_base = '94947e9d7e6a3dabaaeea5151532850ad68e9c09305e20783e22ea0b8dd665e5f9c81a50bf2a16ac4bddc5abaa625ef1348c0f0e3d3a09484b484d47ce116bb0'
+Refer::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
